@@ -1,3 +1,14 @@
+import os
+import json
+import re
+import difflib
+import datetime as dt
+import time
+import hashlib
+import urllib.request
+from pathlib import Path
+from collections import Counter
+
 def is_duplicate(item, selected):
     a = normalize_title(item['title'])
     url = canonical_url(item['url'])
