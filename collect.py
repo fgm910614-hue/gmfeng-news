@@ -9,6 +9,8 @@ import urllib.request
 from pathlib import Path
 from collections import Counter
 
+from collector_core import FEEDS, fetch_feed, score as fallback_score
+
 def is_duplicate(item, selected):
     a = normalize_title(item['title'])
     url = canonical_url(item['url'])
