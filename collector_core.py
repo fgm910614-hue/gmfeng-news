@@ -15,6 +15,8 @@ FEEDS=[
  ('Guardian World','全球','https://www.theguardian.com/world/rss'),
  ('Guardian Technology','科技AI','https://www.theguardian.com/uk/technology/rss'),
  ('DW China','中国','https://rss.dw.com/rdf/rss-chi-all'),
+ ('UN News Chinese','全球','https://news.un.org/feed/subscribe/zh/news/all/rss.xml'),
+ ('BBC Chinese','中国','https://feeds.bbci.co.uk/zhongwen/simp/rss.xml'),
  ('UN News','全球','https://news.un.org/feed/subscribe/en/news/all/rss.xml'),
  ('NPR World','全球','https://feeds.npr.org/1004/rss.xml'),
  ('NPR Business','商业经济','https://feeds.npr.org/1006/rss.xml'),

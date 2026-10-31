@@ -1,29 +1,27 @@
-# GMFENG NEWS · Cloudflare Pages 免费静态版
+# GMFENG NEWS V2
 
-## 这版与之前 Python 服务器版的区别
+部署：Cloudflare Pages，仓库根目录 `/`，输出目录 `site`，构建命令留空。上传整个项目覆盖旧仓库对应文件即可，保持 `.github/workflows/update-news.yml` 目录结构。
 
-不需要购买服务器。GitHub Actions 每天北京时间约 08:10 尝试读取公开 RSS，生成 `site/data/news.json` 并提交到仓库。Cloudflare Pages 自动重新部署。GitHub 定时任务可能延迟或跳过，不能保证精确时间。Cloudflare Pages 只托管静态 HTML/JSON。
+## 更新内容
+- RSS 来源采集、跨媒体相似标题去重、36 小时时效窗口。
+- 可选 OpenAI API：生成中文标题与摘要，辅助评分；保留原文和链接。未配置时保留英文原文，绝不伪装成中文 AI 翻译。
+- GitHub Actions 每日 UTC 00:00（北京时间 08:00）触发，可能延迟；支持手动运行。
+- 网站展示真实采集时间、翻译数量、来源数量、超过36小时未更新提示。
+- 采集失败或少于10条时保留上次数据，避免发布空白页。
 
-## 1. GitHub
-1. 登录 https://github.com ，新建仓库 `gmfeng-news`（Public 可节约 Actions 额度，注意代码公开）。
-2. 将 ZIP 解压后 **压缩包内的所有文件及 `.github` 文件夹** 上传到仓库根目录。GitHub 网页上传时要确保隐藏的 `.github` 文件夹被包含；若无法上传文件夹，使用 GitHub 网页新建 `.github/workflows/update-news.yml` 并粘贴文件内容。
-3. 打开 Actions，允许工作流；进入 Update news，点击 Run workflow，等待成功。查看 `site/data/news.json` 是否出现真实新闻。首次任务可能因外部 RSS 网络错误失败，此时不会编造新闻。
+## 启用 AI 中文编译
+GitHub 仓库 → Settings → Secrets and variables → Actions → New repository secret：
+- Name: `OPENAI_API_KEY`
+- Secret: 你自己创建的 OpenAI API Key（不要填入仓库文件或发给他人）。
 
-## 2. Cloudflare Pages
-1. 登录 https://dash.cloudflare.com ，进入 Workers & Pages → Create → Pages → Connect to Git。
-2. 选择 `gmfeng-news` 仓库；Production branch 选 main。
-3. Framework preset: None；Build command: 留空；Build output directory: `site`。
-4. 部署后获得类似 `gmfeng-news.pages.dev` 的临时地址。
+本项目默认模型 `gpt-4.1-mini`，可在 workflow 的 `OPENAI_MODEL` 中修改。调用 API 可能产生费用，ChatGPT 订阅不包含 API 额度。请先确认 API 账户可用和计费限额。
 
-## 3. 阿里云 DNS
-1. Cloudflare Pages 项目 → Custom domains → Set up a domain → 输入 `news.gmfeng.com`。
-2. 阿里云域名 DNS 新增 CNAME：主机记录 `news`，记录值填写 **Cloudflare Pages 实际分配给你的** `项目名.pages.dev`。不要修改现有 `@` 或 `www` 记录。
-3. 等待域名和 HTTPS 证书生效，再测试 `https://news.gmfeng.com`。
-4. 在原 GMFENG 网站编辑器增加导航 `<a href="https://news.gmfeng.com">全球资讯</a>`。
+## 验证
+Actions → Update news → Run workflow。查看 Collect、Validate、Commit 三个步骤。网站页面底部显示翻译条数、来源数和采集时间。只有成功生成的新闻会写入 JSON。
 
-## 说明
-- 评分为启发式关键词估计，**不是 AI 语义评分**；没有自动中文翻译或事件级语义去重。
-- 目标每日 30–50 条，实际以抓到的可核实新闻为准，不足时不会虚构。
-- 收藏使用浏览器 localStorage，不跨设备同步。
-- 网站静态资源可免费托管，但 RSS 访问、Actions 执行、Pages 构建都受平台额度和可用性限制。
-- 使用公开 RSS 仍需遵守新闻来源使用条款。
+## GMFENG 主站入口
+在现有主站导航加入：`<a href="https://news.gmfeng.com/" target="_blank" rel="noopener noreferrer">全球资讯</a>`。
+主站代码未包含在此仓库中，因此此入口需要在主站源码中修改，不应直接替换主站文件。
+
+## 局限
+相似标题去重是启发式，不保证完全合并跨语言同一事件；AI 评分不是事实核查；RSS 摘要不代表完整报道；中文翻译需人工抽查。新闻不足50条不强行补齐。首轮启用 AI 后需运行一次 Actions 才会看到中文。
