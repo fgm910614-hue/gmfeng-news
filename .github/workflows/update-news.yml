@@ -4,7 +4,8 @@ name: Update news
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    # 北京时间每天早上 08:00
+    - cron: "0 0 * * *"
 
 permissions:
   contents: write
@@ -22,62 +23,47 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
           persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install openai
-
-      - name: Collect news
+      - name: Collect news without AI translation
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python collect.py
+          OPENAI_API_KEY: ""
+        run: |
+          python collect.py
 
       - name: Commit updated news
-        shell: bash
         run: |
-          set -e
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if git diff --quiet -- site/data/news.json; then
+          git add site/data/news.json
+
+          if git diff --cached --quiet; then
             echo "No news changes to commit."
             exit 0
           fi
 
-          cp site/data/news.json /tmp/gmfeng-news.json
+          git commit -m "Update daily news"
 
+          # Retry if the remote branch has changed.
           for attempt in 1 2 3; do
-            echo "Push attempt $attempt"
-
             git fetch origin main
-            git reset --hard origin/main
 
-            cp /tmp/gmfeng-news.json site/data/news.json
-            git add site/data/news.json
-
-            if git diff --cached --quiet; then
-              echo "News already up to date."
+            if git rebase origin/main && git push origin HEAD:main; then
+              echo "News updated successfully."
               exit 0
             fi
 
-            git commit -m "Update daily news"
-
-            if git push origin HEAD:main; then
-              echo "News published successfully."
-              exit 0
-            fi
-
-            echo "Remote changed. Retrying..."
-            sleep 3
+            git rebase --abort 2>/dev/null || true
+            echo "Push attempt $attempt failed."
+            sleep 5
           done
 
-          echo "Failed to push after 3 attempts."
+          echo "Failed to push updated news."
           exit 1
