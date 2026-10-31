@@ -1,101 +1,404 @@
+
 #!/usr/bin/env python3
-"""GMFENG NEWS V2: RSS -> verified source links -> dedupe -> optional AI Chinese editorial -> static JSON."""
-import os, json, datetime, re, hashlib, urllib.request, difflib, time
+"""GMFENG NEWS V2 - Daily news collection and Chinese editing."""
+
+import os
+import json
+import datetime
+import re
+import difflib
+import time
+import urllib.request
+import urllib.error
 from pathlib import Path
-from collections import Counter
+
 from collector_core import FEEDS, fetch_feed, score as fallback_score
 
-ROOT=Path(__file__).resolve().parent
-OUT=ROOT/'site/data/news.json'
-NOW=datetime.datetime.now(datetime.timezone.utc)
-KEY=os.getenv('OPENAI_API_KEY','').strip()
-MODEL=os.getenv('OPENAI_MODEL','gpt-4.1-mini')
-MAX_ITEMS=50
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / "site/data/news.json"
+
+NOW = datetime.datetime.now(datetime.timezone.utc)
+
+KEY = os.getenv("OPENAI_API_KEY", "").strip()
+MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
+
+MAX_ITEMS = 50
+MIN_ITEMS = 10
+
 
 def normalized(title):
-    t=re.sub(r'[^\w\s]',' ',title.lower())
-    t=re.sub(r'\b(breaking|live|update|exclusive|report|latest|news)\b',' ',t)
-    return ' '.join(t.split())
+    text = re.sub(r"[^\w\s]", " ", title.lower())
+    text = re.sub(
+        r"\b(breaking|live|update|exclusive|report|latest|news)\b",
+        " ",
+        text,
+    )
+    return " ".join(text.split())
+
 
 def is_duplicate(item, kept):
-    a=normalized(item['title'])
+    title = normalized(item["title"])
+
     for other in kept:
-        b=normalized(other['title'])
-        if item['url'].split('?')[0]==other['url'].split('?')[0]: return True
-        if len(a)>20 and len(b)>20 and difflib.SequenceMatcher(None,a,b).ratio()>=0.79: return True
+        other_title = normalized(other["title"])
+
+        if item["url"].split("?")[0] == other["url"].split("?")[0]:
+            return True
+
+        if (
+            len(title) > 20
+            and len(other_title) > 20
+            and difflib.SequenceMatcher(
+                None, title, other_title
+            ).ratio() >= 0.79
+        ):
+            return True
+
     return False
 
+
 def ai_edit(batch):
-    if not KEY: return None
-    payload={'model':MODEL,'temperature':0.1,'response_format':{'type':'json_object'},'messages':[
-      {'role':'system','content':('你是严谨的中文新闻编辑。只根据提供的RSS标题与摘要处理，不补充未证实事实。'
-        '输出JSON对象 {"items":[{"id":"...","title_zh":"...","summary_zh":"...","score":7.2,"reason":"..."}]}。'
-        '逐条保留id。中文标题准确简洁；摘要50至110个汉字，不足信息可更短。'
-        '评分0至10，依据公共影响范围、现实影响、长期意义、来源可信度、时效性；'
-        '避免关键词堆叠虚高。仅凭RSS无法核实的争议表述用“据某媒体报道”。'
-        '不要凭空添加日期、人物、数据、背景或引述。')},
-      {'role':'user','content':json.dumps(batch,ensure_ascii=False)}]}
-    req=urllib.request.Request('https://api.openai.com/v1/chat/completions',data=json.dumps(payload).encode(),headers={
-      'Authorization':'Bearer '+KEY,'Content-Type':'application/json'},method='POST')
-    with urllib.request.urlopen(req,timeout=95) as r: result=json.load(r)
-    return json.loads(result['choices'][0]['message']['content']).get('items',[])
+    if not KEY:
+        raise RuntimeError("OPENAI_API_KEY is missing")
+
+    system_prompt = (
+        "你是一名严谨的中文国际新闻编辑。"
+        "只根据提供的RSS标题和摘要处理新闻，不添加未经证实的信息。"
+        '返回JSON对象，格式为：'
+        '{"items":[{"id":"...",'
+        '"title_zh":"...",'
+        '"summary_zh":"...",'
+        '"score":7.2,'
+        '"reason":"..."}]}。'
+        "必须逐条保留原始id。"
+        "中文标题自然、准确、简洁。"
+        "摘要建议50至110个汉字，信息不足时可以更短。"
+        "评分范围0至10，综合公共影响、现实意义、"
+        "长期价值、来源可信度和时效性。"
+        "避免夸张标题、虚构事实、重复事件和情绪化判断。"
+        "不得添加原文没有的人名、数字、日期或引述。"
+    )
+
+    payload = {
+        "model": MODEL,
+        "temperature": 0.1,
+        "response_format": {"type": "json_object"},
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {
+                "role": "user",
+                "content": json.dumps(batch, ensure_ascii=False),
+            },
+        ],
+    }
+
+    request = urllib.request.Request(
+        "https://api.openai.com/v1/chat/completions",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": "Bearer " + KEY,
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=95) as response:
+            result = json.load(response)
+
+    except urllib.error.HTTPError as error:
+        # Do not print response bodies: they may contain sensitive data.
+        raise RuntimeError(
+            f"OpenAI API HTTP {error.code}: {error.reason}"
+        ) from None
+
+    except urllib.error.URLError as error:
+        raise RuntimeError(
+            f"OpenAI API network error: {type(error.reason).__name__}"
+        ) from None
+
+    content = result["choices"][0]["message"]["content"]
+
+    parsed = json.loads(content)
+
+    items = parsed.get("items")
+
+    if not isinstance(items, list):
+        raise ValueError("AI response does not contain an items list")
+
+    return items
+
 
 def main():
-    all_items=[]; errors=[];successful=0
-    for name,cat,url in FEEDS:
-        try:
-            got=fetch_feed(name,cat,url)
-            all_items.extend(got);successful+=1
-        except Exception as e: errors.append(f'{name}: {str(e)[:130]}')
-    if successful<2: raise RuntimeError('成功新闻源不足2个；保留上一版数据')
-    candidates=[]
-    for x in all_items:
-        try: age=(NOW-datetime.datetime.fromisoformat(x['published'])).total_seconds()/3600
-        except Exception: continue
-        if -6<=age<=36 and x.get('title') and x.get('summary') and x.get('url','').startswith('https://'):
-            x['score'],x['reason']=fallback_score(x)
-            candidates.append(x)
-    candidates.sort(key=lambda x:(x['score'],x['published']),reverse=True)
-    kept=[]
-    for x in candidates:
-        if not is_duplicate(x,kept): kept.append(x)
-        if len(kept)>=90: break
-    if not kept: raise RuntimeError('没有符合时效的新闻；保留旧数据')
-    # Process a larger candidate pool, then select top 50 after editorial scoring.
-    edited=0;mode='原文采集 + 规则评分（未启用 AI）'
-    if KEY:
-        mode='AI 中文编译 + AI 辅助评分'
-        for i in range(0,len(kept),12):
-            batch=[{'id':x['id'],'title':x['title'],'summary':x['summary'][:420],
-                    'source':x['source'],'category':x['category'],'published':x['published']} for x in kept[i:i+12]]
-            try:
-                response=ai_edit(batch)
-                by_id={r['id']:r for r in response if isinstance(r,dict) and 'id' in r}
-                for x in kept[i:i+12]:
-                    r=by_id.get(x['id'],{})
-                    zh_title=str(r.get('title_zh','')).strip()
-                    zh_summary=str(r.get('summary_zh','')).strip()
-                    if zh_title and zh_summary:
-                        x['title_zh']=zh_title[:180];x['summary_zh']=zh_summary[:500]
-                        try: x['score']=round(max(0,min(10,float(r['score']))),1)
-                        except (KeyError,ValueError,TypeError): pass
-                        x['reason']=str(r.get('reason','AI 辅助评分'))[:160]
-                        edited+=1
-            except Exception as e:
-                errors.append('AI batch '+str(i//12+1)+': '+str(e)[:180])
-            time.sleep(.3)
-    kept.sort(key=lambda x:(x['score'],x['published']),reverse=True)
-    final=kept[:MAX_ITEMS]
-    # Do not overwrite a previously healthy site with a tiny failed fetch.
-    if len(final)<10 and OUT.exists(): raise RuntimeError('本次仅采集到少于10条；保留旧数据')
-    payload={'items':final,'last_refresh':NOW.isoformat(),'last_success':NOW.isoformat(),
-       'total_candidates':len(all_items),'deduplicated_candidates':len(kept),
-       'published_count':len(final),'translated_count':sum(bool(x.get('title_zh')) for x in final),
-       'source_count':len(set(x['source'] for x in final)),'mode':mode,
-       'scoring':'AI 辅助评分（需人工判断）' if KEY else '关键词启发式评分，非AI语义分析',
-       'feed_errors':errors}
-    OUT.parent.mkdir(parents=True,exist_ok=True)
-    temp=OUT.with_suffix('.tmp');temp.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');temp.replace(OUT)
-    print('Published',len(final),'translated',payload['translated_count'],'sources',payload['source_count'],'errors',len(errors))
+    print("========== GMFENG NEWS ==========", flush=True)
 
-if __name__=='__main__':main()
+    print(
+        "OPENAI_API_KEY:",
+        "configured" if KEY else "missing",
+        flush=True,
+    )
+
+    print("AI model:", MODEL, flush=True)
+
+    all_items = []
+    errors = []
+    successful_feeds = 0
+
+    # 1. Collect RSS feeds
+    for name, category, url in FEEDS:
+        try:
+            items = fetch_feed(name, category, url)
+            all_items.extend(items)
+            successful_feeds += 1
+
+        except Exception as error:
+            message = (
+                f"RSS {name}: "
+                f"{type(error).__name__}"
+            )
+            errors.append(message)
+            print("WARNING:", message, flush=True)
+
+    print(
+        "RSS collection:",
+        successful_feeds,
+        "feeds,",
+        len(all_items),
+        "items",
+        flush=True,
+    )
+
+    if successful_feeds < 2:
+        raise RuntimeError(
+            "Too few RSS feeds succeeded. Previous data preserved."
+        )
+
+    # 2. Filter recent news
+    candidates = []
+
+    for item in all_items:
+        try:
+            published = datetime.datetime.fromisoformat(
+                item["published"]
+            )
+
+            if published.tzinfo is None:
+                published = published.replace(
+                    tzinfo=datetime.timezone.utc
+                )
+
+            age = (NOW - published).total_seconds() / 3600
+
+        except (KeyError, TypeError, ValueError):
+            continue
+
+        if (
+            -6 <= age <= 36
+            and item.get("title")
+            and item.get("summary")
+            and item.get("url", "").startswith("https://")
+        ):
+            item["score"], item["reason"] = fallback_score(item)
+            candidates.append(item)
+
+    candidates.sort(
+        key=lambda item: (
+            item["score"],
+            item["published"],
+        ),
+        reverse=True,
+    )
+
+    # 3. Remove duplicate news
+    kept = []
+
+    for item in candidates:
+        if not is_duplicate(item, kept):
+            kept.append(item)
+
+        if len(kept) >= 90:
+            break
+
+    print(
+        "After filtering and deduplication:",
+        len(kept),
+        flush=True,
+    )
+
+    if len(kept) < MIN_ITEMS:
+        raise RuntimeError(
+            "Too few qualified articles. Previous data preserved."
+        )
+
+    # 4. Translate and score with AI
+    if not KEY:
+        raise RuntimeError(
+            "OPENAI_API_KEY missing. "
+            "Chinese news update cancelled."
+        )
+
+    edited = 0
+
+    for start in range(0, len(kept), 12):
+        batch_items = kept[start:start + 12]
+
+        batch = [
+            {
+                "id": item["id"],
+                "title": item["title"],
+                "summary": item["summary"][:420],
+                "source": item["source"],
+                "category": item["category"],
+                "published": item["published"],
+            }
+            for item in batch_items
+        ]
+
+        batch_number = start // 12 + 1
+
+        try:
+            response = ai_edit(batch)
+
+            by_id = {
+                str(result["id"]): result
+                for result in response
+                if isinstance(result, dict)
+                and "id" in result
+            }
+
+            batch_translated = 0
+
+            for item in batch_items:
+                result = by_id.get(str(item["id"]), {})
+
+                title_zh = str(
+                    result.get("title_zh") or ""
+                ).strip()
+
+                summary_zh = str(
+                    result.get("summary_zh") or ""
+                ).strip()
+
+                if not title_zh or not summary_zh:
+                    continue
+
+                item["title_zh"] = title_zh[:180]
+                item["summary_zh"] = summary_zh[:500]
+
+                try:
+                    item["score"] = round(
+                        max(
+                            0,
+                            min(10, float(result["score"])),
+                        ),
+                        1,
+                    )
+                except (KeyError, ValueError, TypeError):
+                    pass
+
+                item["reason"] = str(
+                    result.get("reason")
+                    or "AI 辅助评分"
+                )[:160]
+
+                edited += 1
+                batch_translated += 1
+
+            print(
+                f"AI batch {batch_number}: "
+                f"translated {batch_translated}/{len(batch_items)}",
+                flush=True,
+            )
+
+        except Exception as error:
+            message = (
+                f"AI batch {batch_number}: "
+                f"{type(error).__name__}: {str(error)[:200]}"
+            )
+
+            errors.append(message)
+            print("ERROR:", message, flush=True)
+
+        time.sleep(0.3)
+
+    print("Total translated:", edited, flush=True)
+
+    # 5. Publish Chinese news only
+    translated_items = [
+        item for item in kept
+        if item.get("title_zh") and item.get("summary_zh")
+    ]
+
+    translated_items.sort(
+        key=lambda item: (
+            item["score"],
+            item["published"],
+        ),
+        reverse=True,
+    )
+
+    final = translated_items[:MAX_ITEMS]
+
+    if len(final) < MIN_ITEMS:
+        raise RuntimeError(
+            f"Only {len(final)} Chinese articles available. "
+            "Previous site data preserved. "
+            "Check the AI errors above."
+        )
+
+    # 6. Save updated JSON
+    completed_at = datetime.datetime.now(
+        datetime.timezone.utc
+    ).isoformat()
+
+    payload = {
+        "items": final,
+        "last_refresh": completed_at,
+        "last_success": completed_at,
+        "total_candidates": len(all_items),
+        "deduplicated_candidates": len(kept),
+        "published_count": len(final),
+        "translated_count": len(final),
+        "source_count": len({
+            item["source"] for item in final
+        }),
+        "mode": "AI 中文编译 + AI 辅助评分",
+        "scoring": "AI 辅助评分（需人工判断）",
+        "feed_errors": errors,
+    }
+
+    OUT.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    temp = OUT.with_suffix(".tmp")
+
+    temp.write_text(
+        json.dumps(
+            payload,
+            ensure_ascii=False,
+            indent=2,
+        ) + "\n",
+        encoding="utf-8",
+    )
+
+    temp.replace(OUT)
+
+    print(
+        "Published",
+        len(final),
+        "translated",
+        payload["translated_count"],
+        "sources",
+        payload["source_count"],
+        "errors",
+        len(errors),
+        flush=True,
+    )
+
+    print("GMFENG NEWS update completed.", flush=True)
+
+
+if __name__ == "__main__":
+    main()
