@@ -31,6 +31,126 @@ def get_text(el,*names):
   node=el.find(name)
   if node is not None and node.text:return clean(node.text)
  return ''
+# Extract only images explicitly advertised in the RSS entry; no article-page scraping.
+MEDIA_NS = '{http://search.yahoo.com/mrss/}'
+ATOM_NS = '{http://www.w3.org/2005/Atom}'
+
+def rss_image(entry):
+ """Return a plausible HTTPS news image, or an empty string.
+
+ Some publishers do not provide images. The front end then uses a compact
+ text-only layout rather than an empty image placeholder.
+ """
+ candidates = []
+ for tag in (MEDIA_NS+'content', MEDIA_NS+'thumbnail', 'enclosure'):
+  for node in entry.findall('.//'+tag):
+   url = (node.get('url') or '').strip()
+   typ = (node.get('type') or '').lower()
+   medium = (node.get('medium') or '').lower()
+   if typ and not typ.startswith('image/') and not re.search(r'\.(?:jpe?g|png|webp)(?:\?|$)',url,re.I):
+    continue
+   if medium and medium not in ('image','photo'):
+    continue
+   try:
+    width = int(node.get('width','0'))
+    height = int(node.get('height','0'))
+   except ValueError: width=height=0
+   if (width and width<120) or (height and height<90):
+    continue
+   candidates.append(url)
+ # Some feeds include the image in their RSS description or content:encoded.
+ for tag in ('description','{http://purl.org/rss/1.0/modules/content/}encoded',ATOM_NS+'content'):
+  node=entry.find(tag)
+  if node is not None and node.text:
+   candidates.extend(html.unescape(x) for x in re.findall(r'<img\b[^>]*\bsrc=[\"\']([^\"\']+)',node.text,re.I)[:2])
+ for url in candidates:
+  try:
+   parts=urllib.parse.urlsplit(url)
+   if parts.scheme=='https' and parts.hostname and not re.search(r'(pixel|tracking|spacer|avatar|logo|icon)',parts.path,re.I):
+    return url[:1800]
+  except ValueError: pass
+ return ''
+
+# Extract only images explicitly advertised in the RSS entry; no article-page scraping.
+MEDIA_NS = '{http://search.yahoo.com/mrss/}'
+ATOM_NS = '{http://www.w3.org/2005/Atom}'
+
+def rss_image(entry):
+ """Return a plausible HTTPS news image, or an empty string.
+
+ Some publishers do not provide images. The front end then uses a compact
+ text-only layout rather than an empty image placeholder.
+ """
+ candidates = []
+ for tag in (MEDIA_NS+'content', MEDIA_NS+'thumbnail', 'enclosure'):
+  for node in entry.findall('.//'+tag):
+   url = (node.get('url') or '').strip()
+   typ = (node.get('type') or '').lower()
+   medium = (node.get('medium') or '').lower()
+   if typ and not typ.startswith('image/') and not re.search(r'\.(?:jpe?g|png|webp)(?:\?|$)',url,re.I):
+    continue
+   if medium and medium not in ('image','photo'):
+    continue
+   try:
+    width = int(node.get('width','0'))
+    height = int(node.get('height','0'))
+   except ValueError: width=height=0
+   if (width and width<120) or (height and height<90):
+    continue
+   candidates.append(url)
+ # Some feeds include the image in their RSS description or content:encoded.
+ for tag in ('description','{http://purl.org/rss/1.0/modules/content/}encoded',ATOM_NS+'content'):
+  node=entry.find(tag)
+  if node is not None and node.text:
+   candidates.extend(html.unescape(x) for x in re.findall(r'<img\b[^>]*\bsrc=[\"\']([^\"\']+)',node.text,re.I)[:2])
+ for url in candidates:
+  try:
+   parts=urllib.parse.urlsplit(url)
+   if parts.scheme=='https' and parts.hostname and not re.search(r'(pixel|tracking|spacer|avatar|logo|icon)',parts.path,re.I):
+    return url[:1800]
+  except ValueError: pass
+ return ''
+
+# Extract only images explicitly advertised in the RSS entry; no article-page scraping.
+MEDIA_NS = '{http://search.yahoo.com/mrss/}'
+ATOM_NS = '{http://www.w3.org/2005/Atom}'
+
+def rss_image(entry):
+ """Return a plausible HTTPS news image, or an empty string.
+
+ Some publishers do not provide images. The front end then uses a compact
+ text-only layout rather than an empty image placeholder.
+ """
+ candidates = []
+ for tag in (MEDIA_NS+'content', MEDIA_NS+'thumbnail', 'enclosure'):
+  for node in entry.findall('.//'+tag):
+   url = (node.get('url') or '').strip()
+   typ = (node.get('type') or '').lower()
+   medium = (node.get('medium') or '').lower()
+   if typ and not typ.startswith('image/') and not re.search(r'\.(?:jpe?g|png|webp)(?:\?|$)',url,re.I):
+    continue
+   if medium and medium not in ('image','photo'):
+    continue
+   try:
+    width = int(node.get('width','0'))
+    height = int(node.get('height','0'))
+   except ValueError: width=height=0
+   if (width and width<120) or (height and height<90):
+    continue
+   candidates.append(url)
+ # Some feeds include the image in their RSS description or content:encoded.
+ for tag in ('description','{http://purl.org/rss/1.0/modules/content/}encoded',ATOM_NS+'content'):
+  node=entry.find(tag)
+  if node is not None and node.text:
+   candidates.extend(html.unescape(x) for x in re.findall(r'<img\b[^>]*\bsrc=[\"\']([^\"\']+)',node.text,re.I)[:2])
+ for url in candidates:
+  try:
+   parts=urllib.parse.urlsplit(url)
+   if parts.scheme=='https' and parts.hostname and not re.search(r'(pixel|tracking|spacer|avatar|logo|icon)',parts.path,re.I):
+    return url[:1800]
+  except ValueError: pass
+ return ''
+
 def fetch_feed(name,cat,url):
  req=urllib.request.Request(url,headers={'User-Agent':'DailySignal/1.0 (RSS reader)'})
  with urllib.request.urlopen(req,timeout=12) as resp: raw=resp.read(2_000_000)
@@ -52,7 +172,7 @@ def fetch_feed(name,cat,url):
    try:iso=datetime.datetime.fromisoformat(published.replace('Z','+00:00')).isoformat()
    except:iso=datetime.datetime.now(datetime.timezone.utc).isoformat()
   if not title or not link.startswith('https://'):continue
-  out.append(dict(id=hashlib.sha256(link.encode()).hexdigest()[:20],title=title,summary=summary,url=link,source=name,category=cat,published=iso))
+  out.append(dict(id=hashlib.sha256(link.encode()).hexdigest()[:20],title=title,summary=summary,url=link,source=name,category=cat,published=iso,image=rss_image(e)))
  return out
 def score(item):
  text=(item['title']+' '+item['summary']).lower();v=4.5;hits=[]
