@@ -210,38 +210,32 @@ def save_json(data):
 
 # 目标：50 条时中国约 12、亚洲其他地区约 13，其余全球约 25。
 # 某区域不足时自动回填其他地区；这不是实际地域的强制配额。
-REGION_TARGETS = {"中国": 12, "亚洲": 13, "其他": 25}
-
-CHINA_TERMS = re.compile(
-    r"中国|大陆|香港|澳门|深圳|北京|上海|China|Chinese|Hong Kong|Macau|Shenzhen|Beijing|Shanghai",
-    re.I,
-)
-ASIA_TERMS = re.compile(
-    r"日本|韩国|台湾|印度|新加坡|越南|泰国|印尼|印度尼西亚|菲律宾|马来西亚|亚洲|"
-    r"Japan|Korea|Taiwan|India|Singapore|Vietnam|Thailand|Indonesia|Philippines|Malaysia|Asia",
-    re.I,
-)
-
+REGION_TARGETS = {"中国": 10, "亚洲": 10, "欧洲": 9, "美洲": 9, "中东非洲": 8, "大洋洲": 4}
+REGION_PATTERNS = [
+ ("中国", r"中国|大陆|香港|澳门|台湾|深圳|北京|上海|China|Chinese|Hong Kong|Macau|Taiwan|Beijing|Shanghai|Shenzhen"),
+ ("亚洲", r"亚洲|日本|韩国|印度|新加坡|越南|泰国|印尼|菲律宾|马来西亚|巴基斯坦|Japan|Korea|India|Singapore|Vietnam|Thailand|Indonesia|Philippines|Malaysia|Pakistan|Asia"),
+ ("欧洲", r"欧洲|英国|法国|德国|意大利|西班牙|乌克兰|俄罗斯|欧盟|Europe|Britain|UK|France|Germany|Italy|Spain|Ukraine|Russia|European Union"),
+ ("美洲", r"美国|加拿大|墨西哥|巴西|阿根廷|美国总统|美洲|United States|U\.S\.|USA|Canada|Mexico|Brazil|Argentina|Latin America|White House"),
+ ("中东非洲", r"中东|非洲|以色列|加沙|伊朗|沙特|埃及|尼日利亚|南非|Middle East|Africa|Israel|Gaza|Iran|Saudi|Egypt|Nigeria|South Africa"),
+ ("大洋洲", r"澳大利亚|新西兰|大洋洲|Australia|New Zealand|Oceania"),
+]
+REGION_PATTERNS = [(region,re.compile(pattern,re.I)) for region,pattern in REGION_PATTERNS]
+REGIONAL_FEED_CATEGORIES = set(REGION_TARGETS)
 
 def news_region(item):
-    """基于来源定向和标题的粗略地域标记；并非地理事实识别。"""
-    title = str(item.get("title") or "")
-    category = str(item.get("category") or "")
-    if CHINA_TERMS.search(title):
-        return "中国"
-    if ASIA_TERMS.search(title):
-        return "亚洲"
-    # 定向查询源可能混入无关结果：只在明确的区域 RSS 上使用来源归属。
-    if category == "中国" and item.get("source") in ("BBC Chinese", "DW China"):
-        return "中国"
-    if category == "亚洲" and item.get("source") in ("BBC Asia", "Guardian Asia"):
-        return "亚洲"
-    return "其他"
+ """Heuristic article region. Title first, then region-specific feed category; not a fact classifier."""
+ title = str(item.get('title') or '')
+ for region,pattern in REGION_PATTERNS:
+  if pattern.search(title):return region
+ cat=str(item.get('category') or '')
+ if cat in REGIONAL_FEED_CATEGORIES:return cat
+ return '其他'
 
 
 def balanced_pick(items, limit):
     """先按地区软目标择优，再以全局最高分填满剩余位置。"""
     pools = {region: [] for region in REGION_TARGETS}
+    pools["其他"] = []
     for item in items:
         region = news_region(item)
         item["region"] = region
@@ -407,6 +401,7 @@ def main():
     # 4. 选取最多 50 条
     final_items = balanced_pick(selected, MAX_ITEMS)
     region_counts = {region: sum(x["region"] == region for x in final_items) for region in REGION_TARGETS}
+    region_counts["其他"] = sum(x["region"] == "其他" for x in final_items)
     print("Region distribution:", region_counts, flush=True)
 
     if len(final_items) < MIN_ITEMS:
@@ -442,7 +437,9 @@ def main():
         "region_counts": region_counts,
         "mode": "RSS 自动采集 + Argos 离线中文翻译",
         "scoring": "规则辅助评分，非 AI 语义分析",
-        "feed_errors": errors
+        "feed_errors": errors,
+        "configured_feeds": len(FEEDS),
+        "successful_feeds": successful_feeds
     }
 
     save_json(payload)
