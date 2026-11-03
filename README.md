@@ -1,27 +1,20 @@
-# GMFENG NEWS：自动中文翻译版
+# GMFENG NEWS
 
-## 本次更新
-- 保留现有 RSS 采集、评分、去重和每日更新。
-- 新增 `translate_news.py`：Google Cloud Translation Basic v2 翻译英文标题与摘要，保留原文、链接。
-- 优先复用上一版 JSON 中英文内容完全相同的翻译，减少重复计费。
-- 翻译失败、未配置密钥或超过单次字符上限时显示英文原文，新闻仍照常发布。
-- 网站继续优先显示 `title_zh`、`summary_zh`。
+每日 RSS 采集、去重、规则评分、中文翻译和静态发布。
 
-## 启用翻译（需要自行完成）
-1. 在 Google Cloud 创建项目并关联结算账号。启用 **Cloud Translation API**。
-2. 在 Google Cloud 的「API 和服务 → 凭据」创建 **API 密钥**，将密钥限制为仅可调用 **Cloud Translation API**。Basic v2 支持 API 密钥，**本方案不使用服务账号 JSON**。
-3. GitHub 仓库 → Settings → Secrets and variables → Actions → New repository secret：
-   - Name: `GOOGLE_TRANSLATE_API_KEY`
-   - Secret: Google Cloud API 密钥（不要提交到代码仓库）
-4. GitHub → Actions → Update news → Run workflow。检查 Collect news and translate to Chinese 是否成功。
-5. 打开 `https://news.gmfeng.com/`，检查中文标题、摘要和网站底部翻译条数。
+## 免费中文翻译
 
-**费用注意**：Google Cloud 免费字符额度、适用条件和价格可能变化，需以 Google Cloud 控制台和官方定价为准。本项目的 `TRANSLATION_MAX_CHARS=450000` 只是**单次运行**安全上限，不是月度计费上限。建议在 Google Cloud 设置预算提醒和 API 配额，并监控每天实际使用量。GitHub 定时任务可能因重跑而增加费用。
+使用开源 Argos Translate 英译中模型，在 GitHub Actions 运行器内翻译，不需要 Google Cloud、API Key 或银行卡。首次运行会下载模型并安装依赖，可能需要较长时间。翻译质量及 GitHub Actions 免费运行资源不作保证。
 
-## 技术说明
-- 不需要额外 pip 包，使用 Python 标准库发起 HTTPS 请求。
-- 每篇新闻翻译一次标题与摘要，摘要最多截取 1500 字符。
-- 仅复用上一版 `news.json` 中完全一致的原文，**不是永久缓存**；跨多天的再次出现可能重新计费。
-- 翻译失败时不会伪装成中文；`translation_errors` 记录错误类型。
-- 如果 Google Cloud 访问或计费受限，保持未配置状态即可继续原文采集。
-- 代码修改尚未部署到 GitHub，需要你上传本压缩包内的文件并配置密钥。
+工作流 `.github/workflows/update-news.yml` 每日北京时间约 08:00 触发，也可在 Actions 中手动运行。GitHub 定时任务可能延迟。
+
+翻译结果写入 `site/data/news.json` 的 `title_zh`、`summary_zh`，保留原文及来源链接。重复新闻尽量沿用上次译文；失败时保留原文，不中断新闻发布。`translated_count` 统计成功翻译或复用的条目。
+
+## 部署
+
+1. 将本升级包的 `collect.py`、`translate_news.py`、`site/index.html`、`.github/workflows/update-news.yml` 上传到仓库对应位置；不要覆盖线上已有的 `site/data/news.json`。
+2. 进入 GitHub Actions → Update news → Run workflow。
+3. 检查日志和 `site/data/news.json` 中的 `translated_count`、`translation_errors`。
+4. 等待 Cloudflare Pages 自动部署，访问 `https://news.gmfeng.com` 检查中文标题和摘要。
+
+**注意：** 不再需要 `GOOGLE_TRANSLATE_API_KEY`。若此前已配置，可在 GitHub Secrets 中删除该密钥。旧工作流中任何 Google 翻译环境变量都应去掉。

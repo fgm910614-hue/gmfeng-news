@@ -211,7 +211,7 @@ def save_json(data):
 def main():
     print("========== GMFENG NEWS / RSS MODE ==========")
     print("Started:", NOW.isoformat())
-    print("Google translation:", "enabled" if os.getenv("GOOGLE_TRANSLATE_API_KEY") else "not configured")
+    print("Offline translation:", "Argos Translate (no API key)")
     print(flush=True)
 
     previous = read_previous()
@@ -378,7 +378,7 @@ def main():
         "translation_characters": translation_chars,
         "translation_errors": translation_errors,
         "source_count": len(sources),
-        "mode": "RSS 自动采集 + Google 中文翻译" if os.getenv("GOOGLE_TRANSLATE_API_KEY") else "RSS 自动采集（未配置翻译密钥）",
+        "mode": "RSS 自动采集 + Argos 离线中文翻译",
         "scoring": "规则辅助评分，非 AI 语义分析",
         "feed_errors": errors
     }

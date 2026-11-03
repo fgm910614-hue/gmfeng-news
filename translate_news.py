@@ -1,51 +1,53 @@
-"""Optional Google Cloud Translation Basic v2 integration.
+"""Offline English-to-Chinese translation with Argos Translate.
 
-Uses GOOGLE_TRANSLATE_API_KEY stored in GitHub Actions Secrets. No third-party
-Python packages required. Source titles and summaries are always preserved.
+No cloud API, account or billing. GitHub Actions downloads the open-source
+model at run time. Source text is retained, and errors never stop publishing.
 """
-import json
-import html
 import os
 import re
-import time
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError, URLError
 
-ENDPOINT = 'https://translation.googleapis.com/language/translate/v2'
-MAX_TEXT_CHARS = 1500
-MAX_RUN_CHARS = int(os.getenv('TRANSLATION_MAX_CHARS', '450000'))
+MAX_TEXT_CHARS = 900
+MAX_RUN_CHARS = max(0, int(os.getenv('TRANSLATION_MAX_CHARS', '18000')))
 CJK = re.compile(r'[\u3400-\u9fff]')
 
 
-def _translate_pair(title, summary, api_key):
-    texts = [title[:MAX_TEXT_CHARS], summary[:MAX_TEXT_CHARS]]
-    body = json.dumps({'q': texts, 'target': 'zh-CN', 'format': 'text'}, ensure_ascii=False).encode('utf-8')
-    request = Request(ENDPOINT + '?key=' + api_key, data=body, headers={'Content-Type': 'application/json'}, method='POST')
-    with urlopen(request, timeout=20) as response:
-        data = json.load(response)
-    translations = data['data']['translations']
-    if len(translations) != 2:
-        raise ValueError('Unexpected translation response')
-    return html.unescape(translations[0]['translatedText']), html.unescape(translations[1]['translatedText'])
+def _load_translator():
+    import argostranslate.package as package
+    import argostranslate.translate as translate
+
+    installed = translate.get_installed_languages()
+    english = next((lang for lang in installed if lang.code == 'en'), None)
+    chinese = next((lang for lang in installed if lang.code == 'zh'), None)
+    if not (english and chinese):
+        package.update_package_index()
+        available = package.get_available_packages()
+        model = next((p for p in available if p.from_code == 'en' and p.to_code == 'zh'), None)
+        if model is None:
+            raise RuntimeError('English-to-Chinese model not found')
+        package.install_from_path(model.download())
+        installed = translate.get_installed_languages()
+        english = next((lang for lang in installed if lang.code == 'en'), None)
+        chinese = next((lang for lang in installed if lang.code == 'zh'), None)
+    if not (english and chinese):
+        raise RuntimeError('English-to-Chinese model unavailable after installation')
+    return english.get_translation(chinese)
 
 
 def translate_items(items, previous=None):
-    """Mutates selected news items; returns (translated_count, errors, chars_sent).
+    """Translate selected items in place. Returns (count, errors, characters).
 
-    Reuses previous Chinese text only when the English source text matches.
-    Caps the total characters sent in a single run; no key means safe fallback.
+    Previously translated records are reused when URL and source text match.
+    If the offline model cannot be installed, originals remain intact.
     """
-    key = os.getenv('GOOGLE_TRANSLATE_API_KEY', '').strip()
-    previous_items = (previous or {}).get('items', [])
-    cache = {}
-    for old in previous_items:
-        if not isinstance(old, dict):
-            continue
-        cache[(old.get('url'), old.get('title'), old.get('summary'))] = old
+    old_items = (previous or {}).get('items', [])
+    cache = {
+        (old.get('url'), old.get('title'), old.get('summary')): old
+        for old in old_items if isinstance(old, dict)
+    }
+    errors, count, used = [], 0, 0
+    translator = None
+    model_failed = False
 
-    errors = []
-    used = 0
-    translated = 0
     for item in items:
         title = str(item.get('title') or '').strip()
         summary = str(item.get('summary') or '').strip()
@@ -53,40 +55,39 @@ def translate_items(items, previous=None):
         if old.get('title_zh') and (old.get('summary_zh') or not summary):
             item['title_zh'] = old['title_zh']
             item['summary_zh'] = old.get('summary_zh', '')
-            translated += 1
+            count += 1
             continue
-
-        if not key:
+        if not title:
             continue
-        if not title or not summary:
-            # Preserve incomplete records without inventing a Chinese summary.
-            continue
-        if CJK.search(title) and CJK.search(summary):
+        if CJK.search(title) and (not summary or CJK.search(summary)):
             item['title_zh'] = title
             item['summary_zh'] = summary
-            translated += 1
+            count += 1
             continue
-        count = len(title[:MAX_TEXT_CHARS]) + len(summary[:MAX_TEXT_CHARS])
-        if used + count > MAX_RUN_CHARS:
-            errors.append('Reached translation character safety limit')
+        if model_failed:
+            continue
+        title_part = title[:MAX_TEXT_CHARS]
+        summary_part = summary[:MAX_TEXT_CHARS]
+        chars = len(title_part) + len(summary_part)
+        if used + chars > MAX_RUN_CHARS:
+            errors.append('Offline translation character budget reached; remaining articles keep originals')
             break
-        # Reserve before request to avoid unbounded retries/cost on failures.
-        used += count
         try:
-            translated_title, translated_summary = _translate_pair(title, summary, key)
-            if not translated_title.strip() or not translated_summary.strip():
-                raise ValueError('Empty translated title or summary')
-            item['title_zh'] = translated_title
-            item['summary_zh'] = translated_summary
-            translated += 1
-        except (HTTPError, URLError, TimeoutError, ValueError, KeyError, OSError) as exc:
-            # Never log the URL, because it contains the secret API key.
-            errors.append(f'Translation failed for item {len(errors)+1}: {type(exc).__name__}')
-            if isinstance(exc, HTTPError) and exc.code in (400, 401, 403, 429):
-                errors.append('Translation service rejected request or quota; remaining items use original text')
-                break
+            if translator is None:
+                translator = _load_translator()
+            zh_title = translator.translate(title_part).strip()
+            zh_summary = translator.translate(summary_part).strip() if summary_part else ''
+            if not zh_title or not CJK.search(zh_title):
+                raise ValueError('Translation produced no Chinese title')
+            item['title_zh'] = zh_title
+            item['summary_zh'] = zh_summary
+            count += 1
+            used += chars
+        except Exception as exc:
+            errors.append(f'Offline translation error: {type(exc).__name__}: {str(exc)[:120]}')
+            if translator is None:
+                model_failed = True
             if len(errors) >= 5:
-                errors.append('Too many translation failures; remaining items use original text')
+                errors.append('Too many translation errors; remaining articles keep originals')
                 break
-        time.sleep(0.1)
-    return translated, errors, used
+    return count, errors, used
