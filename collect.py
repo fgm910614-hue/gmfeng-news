@@ -18,6 +18,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
 
 from collector_core import FEEDS, fetch_feed, score as fallback_score
+from translate_news import translate_items
 
 
 # ========== 基础配置 ==========
@@ -210,7 +211,7 @@ def save_json(data):
 def main():
     print("========== GMFENG NEWS / RSS MODE ==========")
     print("Started:", NOW.isoformat())
-    print("AI translation: disabled")
+    print("Google translation:", "enabled" if os.getenv("GOOGLE_TRANSLATE_API_KEY") else "not configured")
     print(flush=True)
 
     previous = read_previous()
@@ -353,9 +354,15 @@ def main():
             "Previous site data preserved."
         )
 
-    # 5. 输出网站数据
-    # RSS 模式不生成虚假的中文翻译。
-    # 如果原始来源是中文，就保留原始中文。
+    # 5. 可选中文翻译；失败时保留英文原文，不影响发布。
+    translated_count, translation_errors, translation_chars = translate_items(
+        final_items, previous
+    )
+    print("Translation chars submitted:", translation_chars, flush=True)
+    for message in translation_errors:
+        print("WARNING:", message, flush=True)
+
+    # 6. 输出网站数据
     sources = {
         item["source"] for item in final_items
     }
@@ -367,13 +374,11 @@ def main():
         "total_candidates": len(all_items),
         "deduplicated_candidates": len(selected),
         "published_count": len(final_items),
-        "translated_count": sum(
-            bool(item.get("title_zh"))
-            and bool(item.get("summary_zh"))
-            for item in final_items
-        ),
+        "translated_count": translated_count,
+        "translation_characters": translation_chars,
+        "translation_errors": translation_errors,
         "source_count": len(sources),
-        "mode": "RSS 自动采集，无 AI 翻译",
+        "mode": "RSS 自动采集 + Google 中文翻译" if os.getenv("GOOGLE_TRANSLATE_API_KEY") else "RSS 自动采集（未配置翻译密钥）",
         "scoring": "规则辅助评分，非 AI 语义分析",
         "feed_errors": errors
     }
