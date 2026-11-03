@@ -206,6 +206,65 @@ def save_json(data):
             os.remove(temp_path)
 
 
+# ========== 地域平衡（软目标，不降低新闻质量门槛） ==========
+
+# 目标：50 条时中国约 12、亚洲其他地区约 13，其余全球约 25。
+# 某区域不足时自动回填其他地区；这不是实际地域的强制配额。
+REGION_TARGETS = {"中国": 12, "亚洲": 13, "其他": 25}
+
+CHINA_TERMS = re.compile(
+    r"中国|大陆|香港|澳门|深圳|北京|上海|China|Chinese|Hong Kong|Macau|Shenzhen|Beijing|Shanghai",
+    re.I,
+)
+ASIA_TERMS = re.compile(
+    r"日本|韩国|台湾|印度|新加坡|越南|泰国|印尼|印度尼西亚|菲律宾|马来西亚|亚洲|"
+    r"Japan|Korea|Taiwan|India|Singapore|Vietnam|Thailand|Indonesia|Philippines|Malaysia|Asia",
+    re.I,
+)
+
+
+def news_region(item):
+    """基于来源定向和标题的粗略地域标记；并非地理事实识别。"""
+    title = str(item.get("title") or "")
+    category = str(item.get("category") or "")
+    if CHINA_TERMS.search(title):
+        return "中国"
+    if ASIA_TERMS.search(title):
+        return "亚洲"
+    # 定向查询源可能混入无关结果：只在明确的区域 RSS 上使用来源归属。
+    if category == "中国" and item.get("source") in ("BBC Chinese", "DW China"):
+        return "中国"
+    if category == "亚洲" and item.get("source") in ("BBC Asia", "Guardian Asia"):
+        return "亚洲"
+    return "其他"
+
+
+def balanced_pick(items, limit):
+    """先按地区软目标择优，再以全局最高分填满剩余位置。"""
+    pools = {region: [] for region in REGION_TARGETS}
+    for item in items:
+        region = news_region(item)
+        item["region"] = region
+        pools[region].append(item)
+    chosen = []
+    used = set()
+    for region, target in REGION_TARGETS.items():
+        for item in pools[region][:target]:
+            if len(chosen) >= limit:
+                break
+            chosen.append(item)
+            used.add(id(item))
+    for item in items:
+        if len(chosen) >= limit:
+            break
+        if id(item) not in used:
+            chosen.append(item)
+            used.add(id(item))
+    # 页面仍按评分和时间展示，不按地区分块。
+    chosen.sort(key=lambda item: (item["score"], item["published"]), reverse=True)
+    return chosen
+
+
 # ========== 新闻采集主程序 ==========
 
 def main():
@@ -346,7 +405,9 @@ def main():
     )
 
     # 4. 选取最多 50 条
-    final_items = selected[:MAX_ITEMS]
+    final_items = balanced_pick(selected, MAX_ITEMS)
+    region_counts = {region: sum(x["region"] == region for x in final_items) for region in REGION_TARGETS}
+    print("Region distribution:", region_counts, flush=True)
 
     if len(final_items) < MIN_ITEMS:
         raise RuntimeError(
@@ -378,6 +439,7 @@ def main():
         "translation_characters": translation_chars,
         "translation_errors": translation_errors,
         "source_count": len(sources),
+        "region_counts": region_counts,
         "mode": "RSS 自动采集 + Argos 离线中文翻译",
         "scoring": "规则辅助评分，非 AI 语义分析",
         "feed_errors": errors
