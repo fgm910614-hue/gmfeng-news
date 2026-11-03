@@ -5,6 +5,7 @@ model at run time. Source text is retained, and errors never stop publishing.
 """
 import os
 import re
+from news_quality import polish_zh_title
 
 MAX_TEXT_CHARS = 900
 MAX_RUN_CHARS = max(0, int(os.getenv('TRANSLATION_MAX_CHARS', '18000')))
@@ -53,14 +54,14 @@ def translate_items(items, previous=None):
         summary = str(item.get('summary') or '').strip()
         old = cache.get((item.get('url'), title, summary), {})
         if old.get('title_zh') and (old.get('summary_zh') or not summary):
-            item['title_zh'] = old['title_zh']
+            item['title_zh'] = polish_zh_title(old['title_zh'])
             item['summary_zh'] = old.get('summary_zh', '')
             count += 1
             continue
         if not title:
             continue
         if CJK.search(title) and (not summary or CJK.search(summary)):
-            item['title_zh'] = title
+            item['title_zh'] = polish_zh_title(title)
             item['summary_zh'] = summary
             count += 1
             continue
@@ -79,7 +80,7 @@ def translate_items(items, previous=None):
             zh_summary = translator.translate(summary_part).strip() if summary_part else ''
             if not zh_title or not CJK.search(zh_title):
                 raise ValueError('Translation produced no Chinese title')
-            item['title_zh'] = zh_title
+            item['title_zh'] = polish_zh_title(zh_title)
             item['summary_zh'] = zh_summary
             count += 1
             used += chars
