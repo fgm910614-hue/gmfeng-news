@@ -19,6 +19,7 @@ from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
 
 from collector_core import FEEDS, fetch_feed, score as fallback_score
 from translate_news import translate_items
+from news_quality import editorial_score, region_for, topic_for, deduplicate
 
 
 # ========== 基础配置 ==========
@@ -223,13 +224,7 @@ REGION_PATTERNS = [(region,re.compile(pattern,re.I)) for region,pattern in REGIO
 REGIONAL_FEED_CATEGORIES = set(REGION_TARGETS)
 
 def news_region(item):
- """Heuristic article region. Title first, then region-specific feed category; not a fact classifier."""
- title = str(item.get('title') or '')
- for region,pattern in REGION_PATTERNS:
-  if pattern.search(title):return region
- cat=str(item.get('category') or '')
- if cat in REGIONAL_FEED_CATEGORIES:return cat
- return '其他'
+    return region_for(item)[0]
 
 
 def balanced_pick(items, limit):
@@ -365,9 +360,9 @@ def main():
             item.get("category") or "综合"
         )
 
-        item["score"], item["reason"] = (
-            calculate_score(item)
-        )
+        item["score"], item["reason"] = editorial_score(item)
+        item["topic"] = topic_for(item)
+        item["region_confidence"] = region_for(item)[1]
 
         candidates.append(item)
 
@@ -377,26 +372,11 @@ def main():
         flush=True
     )
 
-    # 3. 先排序，再去重
-    candidates.sort(
-        key=lambda item: (
-            item["score"],
-            item["published"]
-        ),
-        reverse=True
-    )
-
-    selected = []
-
-    for item in candidates:
-        if not is_duplicate(item, selected):
-            selected.append(item)
-
-    print(
-        "After deduplication:",
-        len(selected),
-        flush=True
-    )
+    # 3. 高置信度跨媒体事件去重；保留分数最高的代表报道。
+    candidates.sort(key=lambda item: (item["score"], item["published"]), reverse=True)
+    selected, dedup_stats = deduplicate(candidates)
+    print("After deduplication:", len(selected), flush=True)
+    print("Deduplication reasons:", dedup_stats, flush=True)
 
     # 4. 选取最多 50 条
     final_items = balanced_pick(selected, MAX_ITEMS)
@@ -435,8 +415,10 @@ def main():
         "translation_errors": translation_errors,
         "source_count": len(sources),
         "region_counts": region_counts,
+        "deduplication_stats": dedup_stats,
+        "quality_version": "editorial-rules-v1",
         "mode": "RSS 自动采集 + Argos 离线中文翻译",
-        "scoring": "规则辅助评分，非 AI 语义分析",
+        "scoring": "可解释的公共事件优先级规则，非事实可信度评级；不使用付费 AI",
         "feed_errors": errors,
         "configured_feeds": len(FEEDS),
         "successful_feeds": successful_feeds
