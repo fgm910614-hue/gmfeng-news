@@ -7,28 +7,20 @@ from email.utils import parsedate_to_datetime
 ROOT=Path(__file__).resolve().parent
 DB=Path(os.environ.get('NEWS_DB',str(ROOT/'news.db')))
 PORT=int(os.environ.get('PORT','8080'))
-FEEDS=[
- ('BBC World','全球','https://feeds.bbci.co.uk/news/world/rss.xml'),
- ('BBC Business','商业经济','https://feeds.bbci.co.uk/news/business/rss.xml'),
- ('BBC Technology','科技AI','https://feeds.bbci.co.uk/news/technology/rss.xml'),
- ('BBC Science','科学环境','https://feeds.bbci.co.uk/news/science_and_environment/rss.xml'),
- ('Guardian World','全球','https://www.theguardian.com/world/rss'),
- ('Guardian Technology','科技AI','https://www.theguardian.com/uk/technology/rss'),
- ('DW China','中国','https://rss.dw.com/rdf/rss-chi-all'),
- ('UN News Chinese','全球','https://news.un.org/feed/subscribe/zh/news/all/rss.xml'),
- ('BBC Chinese','中国','https://feeds.bbci.co.uk/zhongwen/simp/rss.xml'),
- ('UN News','全球','https://news.un.org/feed/subscribe/en/news/all/rss.xml'),
- ('NPR World','全球','https://feeds.npr.org/1004/rss.xml'),
- ('NPR Business','商业经济','https://feeds.npr.org/1006/rss.xml'),
- # 地域定向来源：优先使用媒体直接发布的 RSS，避免 Google News 聚合 RSS 的 503。
- ('BBC Asia','亚洲','https://feeds.bbci.co.uk/news/world/asia/rss.xml'),
- ('Guardian Asia','亚洲','https://www.theguardian.com/world/asia/rss'),
- ('SCMP China','中国','https://www.scmp.com/rss/4/feed'),
- ('SCMP Hong Kong','中国','https://www.scmp.com/rss/2/feed'),
- ('CNA Asia','亚洲','https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511'),
- ('CNA Singapore','亚洲','https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416'),
- ('CNA Business','商业经济','https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6936'),
-]
+def load_feeds():
+ """Load editable RSS registry; a malformed config should fail loudly."""
+ data=json.loads((ROOT/'feeds.json').read_text(encoding='utf-8'))
+ feeds=data['feeds']
+ if not isinstance(feeds,list) or not feeds:raise ValueError('feeds.json has no feeds')
+ seen=set(); result=[]
+ for item in feeds:
+  name,cat,url=(item[k] for k in ('name','category','url'))
+  if not isinstance(url,str) or not url.startswith('https://'):raise ValueError('Invalid RSS URL: '+str(url))
+  if url in seen:continue
+  seen.add(url);result.append((name,cat,url))
+ return result
+FEEDS=load_feeds()
+
 CATEGORIES=['全部','全球','中国','亚洲','商业经济','科技AI','科学环境']
 KEYWORDS=[('war|conflict|ceasefire|invasion|战争|冲突',1.5),('election|president|government|parliament|选举|政府',1.1),('economy|inflation|central bank|interest rate|经济|通胀',1.1),('ai|artificial intelligence|chip|人工智能|芯片',.8),('earthquake|flood|typhoon|climate|地震|洪水|台风',1.0)]
 def connect():
