@@ -1,6 +1,32 @@
 {
   "items": [
     {
+      "id": "aa628d10efd260ade36d",
+      "title": "RBA interest rates: Reserve Bank hikes cash rate for fifth time this year in blow to mortgage holders",
+      "summary": "Reserve Bank of Australia increases official cash rate to 4.85%, bringing it to highest level since 2008 RBA interest rates live updates: Reserve Bank cash rate decision Get our daily political email , free app or daily news podcast The Reserve Bank has hiked rates for the fifth time this year, from 4.6% to 4.85%, in an attempt to regain control of surging inflation amid an ongoing global oil shock triggered by the war in the Middle East. The RBA’s decisio",
+      "url": "https://www.theguardian.com/australia-news/2026/nov/03/rba-interest-rates-decision-cash-rate-november-reserve-bank-australia",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T03:54:43+00:00",
+      "score": 8.3,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "RBA利率:储备银行今年第五次提高现金利率,打击抵押贷款持有人",
+      "summary_zh": "澳大利亚储备银行将官方现金利率提升至4.85%, 使其在2008年RBA利率实时更新后达到最高水平: 储备银行的现金利率决定获得我们每日的政治电子邮件、免费应用或每日新闻播客。 储备银行今年第五次将利率从4.6%升至4.85%, 非洲区域局的决定"
+    },
+    {
+      "id": "87efcfd56daab67ae866",
+      "title": "US reportedly strikes Iran’s Qeshm Island as Vance voices optimism about a deal",
+      "summary": "Iranian state media reported the sound of explosions on the island in the strait of Hormuz, coming on the eve of crucial US midterms The ⁠US launched limited strikes on ​Iran’s Qeshm Island late on Monday, ⁠according to reports in US media, hours after US vice-president JD Vance said he was optimistic diplomatic efforts to end the war were moving in the right direction. The strikes were reported as being “defensive”, and not thought to be a signal of a ret",
+      "url": "https://www.theguardian.com/world/2026/nov/03/us-strikes-irans-qeshm-island",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T03:18:36+00:00",
+      "score": 8.3,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "据报道,美国袭击伊朗的盖什姆岛,因为万斯对一项协议表示乐观。",
+      "summary_zh": "伊朗国家媒体报导, 霍穆兹海峡岛上爆炸声, 美国在星期一晚些时候对伊朗的盖什姆岛发动了有限的打击, 据报道,这些罢工是“防御性的”,不被认为是抵抗的信号。"
+    },
+    {
       "id": "001f8933fcb79bd49de5",
       "title": "French pupils resume school blockades as country braces for more protests",
       "summary": "Minister warns weeks without lessons are putting exams at risk as unions plan nationwide strike on Thursday Dozens of high schools across France were blockaded again on Monday as the government braced for another tense week of protests over school conditions and the high cost of living. The protests come amid warnings that weeks without lessons are putting some pupils’ school year and final exams at risk. Continue reading...",
@@ -9,7 +35,9 @@
       "category": "全球",
       "published": "2026-11-02T18:17:33+00:00",
       "score": 8.3,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "法国学生恢复校园封锁,",
+      "summary_zh": "周四法国各地数十所高中的罢工计划再次被封锁, 政府因学校条件和高昂的生活费而准备再过一周紧张的抗议活动。 抗议活动是在警告下发生的, 数周没有上课, 学生的学年和期末考试都面临危险。 继续读..."
     },
     {
       "id": "b9ac585d42a76d26af69",
@@ -20,18 +48,9 @@
       "category": "全球",
       "published": "2026-11-02T17:14:23+00:00",
       "score": 8.3,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "b560fd0d84f7e22fae5c",
-      "title": "‘Sharper, longer slowdown’ predicted for Australian economy as fifth interest rate hike looms",
-      "summary": "Australia’s central bank expected to hit mortgage holders again on Tuesday, as war in Middle East combines with collapsing house prices Get our breaking news email , free app or daily news podcast Australia’s economy is set for a “sharper, longer slowdown”, major bank economists say, as the Reserve Bank is forced to keep interest rates higher to rid the nation of persistent inflationary pressures. The RBA is widely expected to hit mortgage holders with a f",
-      "url": "https://www.theguardian.com/australia-news/2026/nov/02/australia-economy-fifth-interest-rate-hike-looms",
-      "source": "Guardian World",
-      "category": "全球",
-      "published": "2026-11-02T06:57:29+00:00",
-      "score": 8.3,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "伊朗战争的突破希望中油价下跌",
+      "summary_zh": "布伦特原油每桶下降6%以上,降至105.55美元,是两周多以来的最低水平 在结束伊朗战争的新希望中,石油价格已降至两周多以来的最低水平。 国际基准Brent Brunt Brunt在星期一下降了6.5%以上,降至每桶105.55美元,是10月16日以来最低的,发送了航空公司的股票,并推低了政府借贷成本. 继续读..."
     },
     {
       "id": "2dd3e3235cd194d1d14d",
@@ -42,7 +61,9 @@
       "category": "全球",
       "published": "2026-11-03T00:01:32+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "在2028年之前,",
+      "summary_zh": "据国家网络安全机构称, 国家网络安全中心预计到2028年, 攻击关键设施, 如电站、机场和医院, 国家网络安全中心表示,"
     },
     {
       "id": "5772877934dbf8da8f07",
@@ -53,7 +74,9 @@
       "category": "全球",
       "published": "2026-11-02T18:34:24+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "被入侵的应用软件的假核警告在乌克兰引发了不安,但没有引起恐慌",
+      "summary_zh": "许多乌克兰人面对多年的俄罗斯袭击,没有认真对待这些消息,并怀疑其真实性。"
     },
     {
       "id": "6b62f0830533dc7de35d",
@@ -64,7 +87,9 @@
       "category": "全球",
       "published": "2026-11-02T17:33:19+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "乌克兰战争停火时间最长后,赫尔森地区的战斗返回",
+      "summary_zh": "尽管这是前所未有的,但六天的休战对改变这场继续肆无忌惮的战争的更广泛轨迹的作用甚微。"
     },
     {
       "id": "826e172c1e1aec37f1fd",
@@ -75,7 +100,9 @@
       "category": "全球",
       "published": "2026-11-02T17:29:49+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "荷兰警方在追捕毒枭时悬赏200万欧元",
+      "summary_zh": "Jos Leijdekkers被缺席判定犯有走私可卡因罪,据信在塞拉利昂。"
     },
     {
       "id": "fa03063f43c9d75e5632",
@@ -86,29 +113,9 @@
       "category": "全球",
       "published": "2026-11-02T16:17:14+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "2c86418607cfca42af2e",
-      "title": "NSW council refuses to show world-renowned Gaza artwork over ‘unacceptable’ safety risk",
-      "summary": "Exclusive: Shoalhaven council says Wall of Tears installation by Phil Buehler posed risk to staff, visitors and tenants Get our breaking news email , free app or daily news podcast A New South Wales local council has refused to show a world-renowned artwork about children killed in Gaza after asking organisers to investigate hiring “armed guards” to counter the risk of “community conflict” over the mural. The organisers, Shoalhaven Friends of Palestine, we",
-      "url": "https://www.theguardian.com/australia-news/2026/nov/03/shoalhaven-council-refuses-to-show-wall-of-tears-gaza-artwork-safety-risk-ntwnfb",
-      "source": "Guardian World",
-      "category": "全球",
-      "published": "2026-11-02T14:00:44+00:00",
-      "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "823ef000f84ad5ea71a1",
-      "title": "Ryanair faces clash with unions as it mulls pay freezes amid soaring fuel costs",
-      "summary": "Airline also weighs up reducing crew on flights and increasing use of AI as part of cost-cutting measures Business live – latest updates Ryanair has said it is considering implementing pay freezes, setting the scene for a confrontation with unions as the airline tries to offset soaring fuel costs driven by the Middle East conflict . The airline is also considering reducing crew numbers on flights and increasing the use of AI, in a cost-cutting drive. Conti",
-      "url": "https://www.theguardian.com/business/2026/nov/02/ryanair-considers-pay-freezes-reducing-crew-on-flights-fuel-costs-soar-ai",
-      "source": "Guardian World",
-      "category": "全球",
-      "published": "2026-11-02T12:57:53+00:00",
-      "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "在受冰箱网锁影响的商店中,",
+      "summary_zh": "整个欧洲的超级市场 经历了温度控制干扰 对乌克兰的假核威胁是随着俄罗斯恢复对南部城市赫尔森的攻击而来的,就在停火结束的几个小时后,数百人从附近的克里姆林宫控制的奥勒什基镇撤离。 Kherson的军方说,一架俄罗斯无人机在上午7时40分袭击了一家医院。 录像显示房间破损 窗户被炸掉"
     },
     {
       "id": "f2de8e72f98519e1197e",
@@ -119,7 +126,9 @@
       "category": "全球",
       "published": "2026-11-02T12:22:10+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "Ryanair说可能会冻结工人的工资 提高机票价格",
+      "summary_zh": "除非美以战争结束,"
     },
     {
       "id": "e30cb372c956e69d300b",
@@ -130,7 +139,9 @@
       "category": "全球",
       "published": "2026-11-02T12:00:00+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "乌克兰:联合国推动在冬季前恢复电力,粮食计划署向奥列什基撤离者提供热餐",
+      "summary_zh": "联合国世界粮食计划署(粮食计划署)正在向400多人提供紧急粮食援助,他们在短暂的地方停火期间离开乌克兰赫尔森地区俄罗斯占领的奥勒什基市。"
     },
     {
       "id": "07e67febb952b52c9717",
@@ -141,18 +152,9 @@
       "category": "全球",
       "published": "2026-11-02T09:42:11+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "7a9654b9b64f2ab8be19",
-      "title": "Award‑winning Australian children’s author Craig Silvey jailed over child exploitation material",
-      "summary": "Jasper Jones writer sent multiple messages about his sexual desire for young boys, Western Australian district court hears Warning: This article contains graphic content Get our breaking news email , free app or daily news podcast The award‑winning author Craig Silvey sent multiple messages about his sexual desire for young boys and was caught with explicit images of children and adults. The young adult novelist was jailed on Monday for seven months after",
-      "url": "https://www.theguardian.com/australia-news/2026/nov/02/australian-author-craig-silvey-jailed-child-exploitation-material-ntwnfb",
-      "source": "Guardian World",
-      "category": "全球",
-      "published": "2026-11-02T08:01:34+00:00",
-      "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "俄乌临时停火期间撤离数百个城市",
+      "summary_zh": "一个俄罗斯占领的乌克兰城市的停火已经结束。 持续数天的停火使得数百名居民得以撤离."
     },
     {
       "id": "f8aa221527d8f25c7979",
@@ -163,7 +165,48 @@
       "category": "全球",
       "published": "2026-11-01T22:26:11+00:00",
       "score": 7.2,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "英国的奴隶制赔偿不应该列入英联邦首脑会议议程。",
+      "summary_zh": "英国首相已经同意就补偿性司法问题展开结构性对话,但据报道,问题仍未列入正式的乔格姆议程。 据报道,英国官员坚持认为,关于奴隶制赔偿的讨论不应列入安提瓜和巴布达英联邦领导人峰会的议程,甚至警告说,如果这个问题正式列入,安迪·伯纳姆将不参加会议,据一位加勒比主要政治人物称。 拉尔夫·贡萨尔"
+    },
+    {
+      "id": "a05daa37f67889f37cfd",
+      "title": "RBA interest rates live: Reserve Bank of Australia meeting today before cash rate decision and announcement – latest news",
+      "summary": "Reserve Bank raises interest rates to an 18-year high, the fifth hike this year Full report: RBA hikes cash rate for fifth time this year in blow to mortgage holders Use our loan calculator to check how the rate rise may affect you Get our breaking news email , free app or daily news podcast The Reserve Bank has hiked rates for the fifth time this year, from 4.6% to 4.85%, in a bid to regain control of surging inflation amid the ongoing global oil shock tr",
+      "url": "https://www.theguardian.com/australia-news/live/2026/nov/03/rba-interest-rates-meeting-today-latest-news-australia-reserve-bank-cash-rate-announcement-decision-live-updates",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T03:51:01+00:00",
+      "score": 6.8,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "RBA利率直播:澳大利亚储备银行今天在现金利率决定和宣布前开会-最新消息",
+      "summary_zh": "储备银行将利率提高到18年的最高点,这是今年的第五次高涨。 储备银行今年第五次将利率从4.6%升至4.85%, 以重新控制全球石油冲击中暴涨的通货膨胀。"
+    },
+    {
+      "id": "9bcfdc55331da27bcd89",
+      "title": "Russian bombing kills 26 people at Ukraine aid centre, Kyiv says",
+      "summary": "Officials say at least nine 3,000kg aerial bombs hit a southern Ukrainian village in what the president called an \"utterly horrific\" attack.",
+      "url": "https://www.bbc.co.uk/news/articles/cjy56dndlyz0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "category": "全球",
+      "published": "2026-11-03T01:56:27+00:00",
+      "score": 6.8,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "基辅说:",
+      "summary_zh": "官员们说,至少9枚3000公斤的空投炸弹击中了乌克兰南部的一个村庄,总统称之为\"非常可怕\"的袭击."
+    },
+    {
+      "id": "b346be2c337580868a85",
+      "title": "Russian bombing of Ukrainian aid centre kills at least 26, Kyiv says",
+      "summary": "Ukrainian president Zelenskyy says attack on aid hub was ‘vile’ and shows Russia does not want to de-escalate Russia on Monday bombed an aid distribution centre and neighbouring shelter in southern Ukraine, killing at least 26 ​people, Ukrainian president Volodymyr Zelenskyy and the country’s emergency services said. Emergency services said two members of a rescue crew and four police officers were among the dead in the village ⁠of Komyshuvakha, in south-e",
+      "url": "https://www.theguardian.com/world/2026/nov/03/russia-bombs-ukrainian-aid-centre-komyshuvakha",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T01:13:52+00:00",
+      "score": 6.8,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "基辅说,",
+      "summary_zh": "乌克兰总统泽连斯基(Zelenskyy)表示攻击援助中心是“恶毒的”, 并显示俄罗斯并不想在星期一轰炸乌克兰南部的援助分发中心和邻近避难所, 急救部门说,在南部Komyshuvakha村,两名救援人员和四名警察死亡。"
     },
     {
       "id": "14e44cb9bb6ae64b52b0",
@@ -174,29 +217,35 @@
       "category": "全球",
       "published": "2026-11-02T22:30:30+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "PM要求受英国在奴隶制中的作用影响的国家帮助形成正式的道歉。",
+      "summary_zh": "Downing Street表示, 他们的意见对于设计一个持久的信息是不可或缺的。 总理正在前往星期二开始的安提瓜和巴布达的英联邦政府首脑峰会(乔格姆)。 无 10 s"
     },
     {
-      "id": "9bcfdc55331da27bcd89",
-      "title": "Russian bombing kills 26 people at Ukraine aid centre, Kyiv says",
-      "summary": "Officials say at least nine 3,000kg aerial bombs hit a southern Ukrainian village in what the president called an \"utterly horrific\" attack.",
-      "url": "https://www.bbc.co.uk/news/articles/cjy56dndlyz0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "category": "全球",
-      "published": "2026-11-02T21:10:04+00:00",
+      "id": "823ef000f84ad5ea71a1",
+      "title": "Ryanair faces clash with unions as it mulls pay freezes amid soaring fuel costs",
+      "summary": "Airline also weighs up reducing crew on flights and increasing use of AI as part of cost-cutting measures Business live – latest updates Ryanair has said it is considering implementing pay freezes, setting the scene for a confrontation with unions as the airline tries to offset soaring fuel costs driven by the Middle East conflict . The airline is also considering reducing crew numbers on flights and increasing the use of AI, in a cost-cutting drive. Conti",
+      "url": "https://www.theguardian.com/business/2026/nov/02/ryanair-considers-pay-freezes-reducing-crew-on-flights-fuel-costs-soar-ai",
+      "source": "Guardian Technology",
+      "category": "科技AI",
+      "published": "2026-11-02T12:57:53+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "Ryanair面临与工会的冲突,因为它在燃料价格飞涨的情况下支付冻结。",
+      "summary_zh": "Ryanair表示正考虑执行冻结工资, 让航空公司在试图抵消中东冲突推动的燃料成本飞涨时, 该航空公司还正在考虑减少航班机组人数,增加AI的使用,以降低成本。 孔蒂语"
     },
     {
-      "id": "1d5f6f34bdfd774751cb",
-      "title": "What are Americans voting for in this election?",
-      "summary": "The BBC's Maddie Gerber explains what's on the ballot in the 2026 midterm elections in the United States.",
-      "url": "https://www.bbc.co.uk/news/videos/cjly0p753dxxo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
+      "id": "cabe6e8cd7f6e50220a8",
+      "title": "移民组织警告：AI助长虚假信息传播，移民成为替罪羊",
+      "summary": "国际移民组织总干事艾米·波普（Amy Pope）周一警告，随着人工智能和社交媒体加速传播有关移民的虚假信息，公众的焦虑与不安正在演变为猜疑，移民也越来越容易成为攻击和排斥的对象。这不仅加剧了社会分歧，也使各国政府更难赢得公众信任、开展移民治理合作。",
+      "url": "https://news.un.org/feed/view/zh/story/2026/11/1143116",
+      "source": "UN News Chinese",
       "category": "全球",
-      "published": "2026-11-02T09:22:55+00:00",
+      "published": "2026-11-02T12:00:00+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "移民组织警告：AI助长虚假信息传播，移民成为替罪羊",
+      "summary_zh": "国际移民组织总干事艾米·波普（Amy Pope）周一警告，随着人工智能和社交媒体加速传播有关移民的虚假信息，公众的焦虑与不安正在演变为猜疑，移民也越来越容易成为攻击和排斥的对象。这不仅加剧了社会分歧，也使各国政府更难赢得公众信任、开展移民治理合作。"
     },
     {
       "id": "46cd8cbd30cb382316b4",
@@ -207,7 +256,9 @@
       "category": "全球",
       "published": "2026-11-02T06:00:32+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "阿拉伯联盟领导人说,",
+      "summary_zh": "Yousef Jabareen说,他准备与反对派集团联合,在赢得议会创纪录的席位后,推翻本雅明·内塔尼亚胡。 以色列主要巴勒斯坦联盟的领导人在星期二选举后保持了权力平衡,他说,该国正面临改变方向的历史机遇。 联合名单负责人Yousef Jabareen说,他准备与“变革”集团联合起来,赶走本雅明·内塔尼亚胡。"
     },
     {
       "id": "35c2e38b2bb7bd4eaa59",
@@ -218,7 +269,9 @@
       "category": "全球",
       "published": "2026-11-01T22:19:13+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "海湾地区濒临崩溃,因为卡塔尔带领与伊朗的会谈阻止美国发动新的袭击",
+      "summary_zh": "过去72小时,卡塔尔一直在领导紧张的调解努力,以防止美国在星期二中期选举后对伊朗发动新一轮袭击。 不确定性使整个海湾地区处于边缘。"
     },
     {
       "id": "991e23bd936f581c6d3a",
@@ -229,7 +282,9 @@
       "category": "科技AI",
       "published": "2026-11-01T18:37:42+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "National Grid将位于英国最大的分站 靠近规划中的Teesside数据中心",
+      "summary_zh": "新发电能力将使东北部能够吸引大规模AI基础设施投资 National Grid已经迈出了一步,在Teesside建造英国最大的电力分站,该分站可以在英国种族扩大AI基础设施的同时向邻近的庞大数据中心供电。 上周,该公司同意在Dorman Point购买29.5公顷(73英亩)的土地, 地点是Teesworks,一个当地私人公司"
     },
     {
       "id": "3ba56f3fae090328f881",
@@ -240,18 +295,9 @@
       "category": "全球",
       "published": "2026-11-01T17:49:28+00:00",
       "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "aee68fc2e0feba9ebd83",
-      "title": "Tens of thousands protest against Narendra Modi regime in Delhi",
-      "summary": "Led by Congress party, India’s opposition alliance channels anger over removal of 130 million names from voter roll Thousands of opposition supporters have gathered in Delhi as protests against the Narendra Modi government continue to gather momentum. Led by the Congress party, India’s opposition alliance has brought together supporters from across the country, amid growing anger over a large-scale revision of the country’s voter roll that has seen 130 mil",
-      "url": "https://www.theguardian.com/world/2026/nov/01/india-opposition-protest-rally-delhi",
-      "source": "Guardian World",
-      "category": "全球",
-      "published": "2026-11-01T16:11:50+00:00",
-      "score": 6.8,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "谈判者在美伊会谈中为重开霍尔木兹海峡而“为最坏的遭遇而战”",
+      "summary_zh": "第三天的间接会谈, 卡塔尔试图谈判释放伊朗资产6美元, 在多哈举行的间接会谈在星期天遭遇了第三天,卡塔尔试图通过谈判释放超过6bn的伊朗人。"
     },
     {
       "id": "e3b756138fe24336cdf1",
@@ -262,7 +308,9 @@
       "category": "全球",
       "published": "2026-11-03T00:08:14+00:00",
       "score": 6.4,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "可能是在致命的佛罗里达喷气式飞机坠毁前 飞机就断裂了",
+      "summary_zh": "国家交通安全委员会也认为天气可能是坠机的一个因素,但警告说确定原因为时尚早."
     },
     {
       "id": "a629c26f4a4d41041e99",
@@ -273,7 +321,22 @@
       "category": "全球",
       "published": "2026-11-02T19:57:56+00:00",
       "score": 6.4,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "Russell Brand不是“强奸人,",
+      "summary_zh": "Russell Brand并不是一个“强奸人并认为自己是正常的精神病人”, Brand的律师Ian Winter KC在Southwark王冠法院的闭幕词中询问,为什么Brand的控告者在据称被强奸时没有反击,他说, \" 他们中没有一个是反抗或反抗的 \""
+    },
+    {
+      "id": "00c01afbedfc5d354514",
+      "title": "世卫组织警告：埃塞俄比亚北部暴力冲突使卫生系统濒临崩溃",
+      "summary": "埃塞俄比亚北部上周末发生致命无人机袭击后，世界卫生组织总干事谭德塞周一呼吁加强对受冲突影响平民的保护。他警告，持续的暴力正将本已脆弱的卫生系统推向崩溃边缘。",
+      "url": "https://news.un.org/feed/view/zh/story/2026/11/1143117",
+      "source": "UN News Chinese",
+      "category": "全球",
+      "published": "2026-11-02T12:00:00+00:00",
+      "score": 6.4,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "世卫组织警告：埃塞俄比亚北部暴力冲突使卫生系统濒临崩溃",
+      "summary_zh": "埃塞俄比亚北部上周末发生致命无人机袭击后，世界卫生组织总干事谭德塞周一呼吁加强对受冲突影响平民的保护。他警告，持续的暴力正将本已脆弱的卫生系统推向崩溃边缘。"
     },
     {
       "id": "7c64774dbaca79d6c15b",
@@ -284,7 +347,9 @@
       "category": "全球",
       "published": "2026-11-02T12:00:00+00:00",
       "score": 6.4,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "教科文组织：每七起记者遇害案件中，六起未能惩治凶手",
+      "summary_zh": "联合国教科文组织周一表示，全球记者遇害案件中，凶手未受惩罚的比例十多年来首次上升。同时，无人机越来越多地被用于袭击记者，成为冲突地区新闻工作者面临的新威胁。"
     },
     {
       "id": "5d5425854bdd6cc37042",
@@ -295,7 +360,9 @@
       "category": "全球",
       "published": "2026-11-02T12:00:00+00:00",
       "score": 6.4,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "埃塞俄比亚:北部暴力将卫生系统推向边缘,",
+      "summary_zh": "世界卫生组织(世卫组织)负责人星期一呼吁加强对埃塞俄比亚北部冲突的平民的保护,"
     },
     {
       "id": "7a4ba80d8fdfae0b0d1d",
@@ -306,7 +373,48 @@
       "category": "全球",
       "published": "2026-11-02T12:00:00+00:00",
       "score": 6.4,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "七起记者谋杀案中有六起没有受到惩罚,",
+      "summary_zh": "根据联合国教科文组织文化组织的最新报告,全球杀害记者的有罪不罚现象在十多年来首次上升,而越来越多地使用无人机则是冲突地区记者面临的新威胁。"
+    },
+    {
+      "id": "fe01e4934507b524571b",
+      "title": "US strikes Iran ahead of midterm elections",
+      "summary": "US officials described the attacks on Qeshm Island as limited and defensive, according to CBS, the BBC's US partner.",
+      "url": "https://www.bbc.co.uk/news/articles/cx240mrm3g8vo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "category": "全球",
+      "published": "2026-11-03T03:39:08+00:00",
+      "score": 6.0,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "美国在中期选举前袭击伊朗",
+      "summary_zh": "美国官员形容对盖什姆岛的袭击是有限的和防御性的,据BBC的美国合作伙伴CBS称."
+    },
+    {
+      "id": "e28f5ace93252c77d8f0",
+      "title": "Supreme Court rejects Trump's request to stop California counting disputed votes",
+      "summary": "The ruling, which comes on the eve of the midterm elections, essentially ends the Trump administration's bid to disqualify the ballots in the state.",
+      "url": "https://www.bbc.co.uk/news/articles/cm5ynekkn5qko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "category": "全球",
+      "published": "2026-11-03T03:32:36+00:00",
+      "score": 6.0,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "最高法院驳回川普停止加州计票争议的要求.",
+      "summary_zh": "该裁决发生在中期选举前夕,基本上结束了特朗普政府取消该州选票资格的举动."
+    },
+    {
+      "id": "860a0e7c55bab7738d64",
+      "title": "North Korea denies being behind record $6.3bn Binance hack",
+      "summary": "US government agencies and cyber analysts have blamed Pyongyang for the record-breaking heist.",
+      "url": "https://www.bbc.co.uk/news/articles/c6rey4v53exgo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "category": "全球",
+      "published": "2026-11-03T01:23:03+00:00",
+      "score": 6.0,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "朝鲜否认落后于记录 6.3bn Binance黑客",
+      "summary_zh": "美国政府机构和网络分析家都指责平壤的抢劫案创纪录."
     },
     {
       "id": "d269152077aa9084f88d",
@@ -317,7 +425,9 @@
       "category": "全球",
       "published": "2026-11-02T23:02:01+00:00",
       "score": 6.0,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "印尼的毒雾令邻国在政治上头痛",
+      "summary_zh": "新加坡和马来西亚政府分裂为焦虑的公民和一个令人毛骨悚然的邻国。"
     },
     {
       "id": "ffdfb14507659efc79ab",
@@ -328,7 +438,9 @@
       "category": "科学环境",
       "published": "2026-11-02T22:45:57+00:00",
       "score": 6.0,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "雪特兰群岛需要冷战时期的军事保护吗?",
+      "summary_zh": "在苏格兰沿岸看到更多俄罗斯拖网渔船后,有人要求加强谢特兰群岛的防御。"
     },
     {
       "id": "9b03c5f551b45207d56a",
@@ -339,7 +451,9 @@
       "category": "全球",
       "published": "2026-11-02T20:08:51+00:00",
       "score": 6.0,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "窃取南非总统农场现金的罪犯",
+      "summary_zh": "该案是\"法尔门\"丑闻的一部分,使得总统西里尔·拉马福萨陷入弹劾的泥潭."
     },
     {
       "id": "1c5dc15dcee579e2b9de",
@@ -350,7 +464,9 @@
       "category": "科学环境",
       "published": "2026-11-02T06:22:00+00:00",
       "score": 6.0,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "和天鹅一起飞行的女人 警告铅的危险",
+      "summary_zh": "被称为\"人类天鹅\"的萨夏·登奇欢迎禁止出售铅弹药的新法律."
     },
     {
       "id": "3590619ebcdb10e7e4b0",
@@ -361,7 +477,61 @@
       "category": "全球",
       "published": "2026-11-02T06:00:33+00:00",
       "score": 6.0,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "多数以色列人认为定居点政策应该改变以避免更多的制裁,",
+      "summary_zh": "调查发现,英国政府实施贸易禁令的决定并不是以色列人在选举中投票的决定性因素。 英国政府决定禁止来自非法定居点的商品贸易, 并没有决定以色列人在大选中如何投票, 但多数人认为以色列政府的定居点政策应该改变, 有激烈的批评"
+    },
+    {
+      "id": "a6139ced89518441e63d",
+      "title": "Political leaders condemn ‘vicious’ alleged baseball bat attack on One Nation volunteer at his Victorian home",
+      "summary": "Police confirm arrest of 37-year-old and 14-year-old boy over alleged assault in Torquay on Sunday night Get our breaking news email , free app or daily news podcast Leaders from across the political spectrum have condemned the alleged assault of a One Nation volunteer with a baseball bat outside his home on Victoria’s Surf Coast. Police on Tuesday confirmed they arrested a 37-year-old Hampton Park man and a 14-year-old boy over the incident, which occurre",
+      "url": "https://www.theguardian.com/australia-news/2026/nov/03/one-nation-volunteer-alleged-attack-assault-torquay-victoria-ntwnfb",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T03:49:23+00:00",
+      "score": 5.7,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "政治领袖谴责「恶毒」的棒球棒攻击“一个民族”的志愿者,",
+      "summary_zh": "警方证实37岁和14岁男孩因据称星期天晚上在托夸遭到袭击而被捕。 警方星期二证实他们逮捕了一名37岁的汉普顿公园男子和一名14岁的男孩,"
+    },
+    {
+      "id": "ad7cdf75cb988330bcfc",
+      "title": "‘Trying to get back into a positive mindset’: court hears voice notes Beau Lamarre-Condon sent day after alleged murders",
+      "summary": "Recordings from police officer to man he’d met on dating app include one in which Lamarre-Condon states: ‘I’m in bed … not feeling the best’ Beau Lamarre-Condon said he was trying to “get back into a positive mindset” in voice notes he sent in the days after he allegedly killed two men in a Sydney terrace. The recordings were sent to a man he had met on a dating app and played to the jury in his double murder trial on Tuesday. Continue reading...",
+      "url": "https://www.theguardian.com/australia-news/2026/nov/03/beau-lamarre-condon-trial-voice-recording-alleged-murders-ntwnfb",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T03:19:27+00:00",
+      "score": 5.7,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "试图回到积极的心态。",
+      "summary_zh": "Lamarre-Condon指出:「我在床上, 感觉不怎么样」Beau Lamarre-Condon说, 他试图在Sydney露台杀死两人后几天, 录音是发给一个他在约会应用程序上认识的人的,并在他星期二的双重谋杀案审判中向陪审团播放. 继续读..."
+    },
+    {
+      "id": "c2029f7db0b7180a4134",
+      "title": "Investigative journalist Kate McClymont gives evidence in Alan Jones indecent assault trial",
+      "summary": "Jones, a former radio broadcaster, has pleaded not guilty to 21 charges of indecent assault and sexual touching Get our breaking news email , free app or daily news podcast The Sydney Morning Herald’s chief investigative reporter, Kate McClymont, has told a Sydney court the alleged victims of Alan Jones she interviewed received no benefit from her or the media company for telling their stories. McClymont, whose 2023 articles led to other alleged victims co",
+      "url": "https://www.theguardian.com/australia-news/2026/nov/03/kate-mcclymont-evidence-alan-jones-trial-ntwnfb",
+      "source": "Guardian World",
+      "category": "全球",
+      "published": "2026-11-03T00:30:57+00:00",
+      "score": 5.7,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "调查记者Kate McClymont在艾伦·琼斯猥亵审判中提供证据",
+      "summary_zh": "前电台播音员琼斯(Jones)对21项猥亵攻击和性接触指控表示不服, McClymont,他的2023篇文章导致其他据称受害者共同"
+    },
+    {
+      "id": "44063326be3c72f60977",
+      "title": "Bollywood film star Ranbir Kapoor on AI, movies and fatherhood",
+      "summary": "The film star plays the leading role in a major new adaptation of the Indian epic Ramayana.",
+      "url": "https://www.bbc.co.uk/news/videos/cmvg9w5w2p1no?at_medium=RSS&at_campaign=rss",
+      "source": "BBC World",
+      "category": "全球",
+      "published": "2026-11-03T00:09:13+00:00",
+      "score": 5.7,
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "宝莱坞电影明星Ranbir Kapoor关于AI,电影和父亲身份",
+      "summary_zh": "电影明星在\"印度史诗拉马亚纳\"的一部重大新改编中扮演主角."
     },
     {
       "id": "c380716d7c1b2ad57835",
@@ -372,7 +542,9 @@
       "category": "全球",
       "published": "2026-11-03T00:07:05+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "数千名欧洲部队在和平的情况下排练乌克兰的部署",
+      "summary_zh": "西方官员强调,派往乌克兰的任何部队都不会参加任何进攻行动."
     },
     {
       "id": "f9c15bc934819c0904fa",
@@ -383,7 +555,9 @@
       "category": "全球",
       "published": "2026-11-02T20:54:44+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "美国中期运动\"摇摇欲坠\"支出纪录 有史以来最昂贵",
+      "summary_zh": "2026年的竞选活动预计将耗资近12美元,"
     },
     {
       "id": "eded1021e6919f8b638c",
@@ -394,7 +568,9 @@
       "category": "全球",
       "published": "2026-11-02T20:39:52+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "移民是伯纳姆的道德问题,",
+      "summary_zh": "首相希望将沙巴纳·马哈茂德的强硬边界线绑在承认移民的价值上,但他可能需要大声疾呼自己的信念, Andy Burnham在Makerfield的竞选路线上,"
     },
     {
       "id": "0b75ae745a2ab4d8ae3b",
@@ -405,18 +581,22 @@
       "category": "全球",
       "published": "2026-11-02T20:00:27+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "科学家说,在115米长的恐龙骨骼中发现了化石红血球",
+      "summary_zh": "对Aratasaurus骨骼的化学测试可以识别血红蛋白的存在,这种有机化合物使血液中的血红蛋白在体内携带氧气 可能就是侏罗纪公园的开凿:研究古代恐龙骨骼的科学家们发现了看似化石的红血球,以及使野兽的血液具有独特性骨骼的分子痕迹。 但研究者声称 分析Hin后发现了这个"
     },
     {
       "id": "a8aac4e3c7f47a30f6df",
       "title": "Who is hacking Europe’s supermarket fridges and freezers, and why?",
-      "summary": "After a second apparent cyber-attack in as many weeks, we examine possible culprits and their motives Shop fridges and freezers across Europe hit by fresh suspected cyber-attack Supermarket fridges and freezers in seven European countries have malfunctioned , their thermostats remotely cranked up in some cases to 50C (122F). The EU has condemned what it said was “a deliberate attempt to disrupt our food supply chain and undermine consumers’ confidence in i",
+      "summary": "After a second apparent cyber-attack in weeks, we examine possible culprits and their motives Shop fridges and freezers across Europe hit by fresh suspected cyber-attack Supermarket fridges and freezers in seven European countries have malfunctioned , their thermostats remotely cranked up in some cases to 50C (122F). The EU has condemned what it said was “a deliberate attempt to disrupt our food supply chain and undermine consumers’ confidence in it”. Cont",
       "url": "https://www.theguardian.com/technology/2026/nov/02/europe-supermarket-fridges-freezers-who-hacking-why",
       "source": "Guardian World",
       "category": "全球",
       "published": "2026-11-02T19:07:40+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "谁会黑进欧洲超市的冰箱和冰箱?",
+      "summary_zh": "在数周以来的第二次明显网络攻击之后, 我们检视了欧洲各地可能的罪犯及其动机 商店冰箱和冷冻机 被七个欧洲国家的新型网络攻击 超级市场冰箱和冷冻机 所击中, 欧盟谴责了它所说的 \" 蓄意破坏我们的粮食供应链并破坏消费者对它的信心 \" 。 连号"
     },
     {
       "id": "55bc5f8f13d1d56a1ced",
@@ -427,7 +607,9 @@
       "category": "全球",
       "published": "2026-11-02T19:06:40+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "面对内阁的反弹,Shabana Mahmood放宽了移民计划",
+      "summary_zh": "除了护理人员外,估计有280 000人及其家属在Shabana Mahmood 5年后申请无限期休假,但她坚持了最强硬的计划,让护理人员等待15年才能在英国定居,但星期一告诉议员,许多移民仍会面临追溯性规则的改变,使他们等待十年。 在内阁反弹和卫生工会的压力下,家庭秘书提议"
     },
     {
       "id": "4ef4d216a0d18803e9fd",
@@ -438,7 +620,9 @@
       "category": "全球",
       "published": "2026-11-02T16:39:20+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "整个欧洲的商店冰箱和冷冻箱 被新的网络攻击",
+      "summary_zh": "7个国家的连锁店说冷却单位的温度一夜之间升高了 类似法国商店的入侵事件 谁会黑进欧洲超市的冰箱和冰箱? 至少七个欧洲国家的超级市场连锁店说,其一些店铺的冰箱和冷冻机的温度一夜之间飙升到50C(122F),这与上个月的网络攻击相呼应,在法国造成了数百万欧元的损失. B区零售商"
     },
     {
       "id": "51989af3e30c573402ed",
@@ -449,7 +633,9 @@
       "category": "全球",
       "published": "2026-11-02T14:35:38+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "维兹 在炸弹威胁后紧急降落时从卢顿起飞的飞机",
+      "summary_zh": "匈牙利一架战斗机在接到威胁后护送飞机前往布达佩斯。"
     },
     {
       "id": "0bd2d47a6d6698b340cb",
@@ -460,105 +646,21 @@
       "category": "全球",
       "published": "2026-11-02T14:24:25+00:00",
       "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "5f9bb53cf53560c1a3dd",
-      "title": "Guardian Essential poll: record number of Australians are turning their backs on the Melbourne Cup",
-      "summary": "Growing disdain for gambling and animal cruelty concerns drive sliding interest in race that once ‘stopped the nation’ Get our breaking news email , free app or daily news podcast A record number of Australians are turning their backs on the Melbourne Cup, with more than two-thirds surveyed saying they have low or zero interest in the annual horse race. Support for the Melbourne Cup has been sliding consistently for a number of years, but the Guardian Esse",
-      "url": "https://www.theguardian.com/sport/2026/nov/03/melbourne-cup-2026-poll-record-numbers-turn-their-backs",
-      "source": "Guardian World",
-      "category": "全球",
-      "published": "2026-11-02T14:00:46+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "3e6e2af59bd0af6e52d9",
-      "title": "World News in Brief: healthcare crisis in Yemen’s Taiz and Afghanistan, Western Sahara mission's phased closure",
-      "summary": "The humanitarian crisis in Yemen is worsening, particularly in the southwestern city of Taiz, which is being encircled by paramilitary Iran-backed Houthi forces.",
-      "url": "https://news.un.org/feed/view/en/story/2026/11/1168723",
-      "source": "UN News",
-      "category": "全球",
-      "published": "2026-11-02T12:00:00+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "5d4ca73724edaa6aa189",
-      "title": "Five arrested after South African farmer shot and tortured",
-      "summary": "The attack on Donovan Marx, 50, comes as right-wing groups say there is a genocide of white people - a claim widely discredited.",
-      "url": "https://www.bbc.co.uk/news/articles/cv4g13z0px8yo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "category": "全球",
-      "published": "2026-11-02T10:48:47+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "9d25dae59b5cfa43050e",
-      "title": "Popular Australian children's author jailed over child exploitation offences",
-      "summary": "The author of Jasper Jones and Runt pleaded guilty in May after police raided his home months earlier.",
-      "url": "https://www.bbc.co.uk/news/articles/cmjwe9nggp60o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "category": "全球",
-      "published": "2026-11-02T08:03:39+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "f4c5be0a71e76073b830",
-      "title": "UN's peacekeeping mission in disputed Western Sahara ends after 35 years",
-      "summary": "The U.N.'s long-running peacekeeping mission for the disputed Western Sahara ceased operations Sunday after 35 years. Once ruled by Spain, it is claimed by both Morocco and the pro-independence Polisario Front.",
-      "url": "https://www.npr.org/2026/11/02/nx-s1-6026050/uns-peacekeeping-western-sahara-ends",
-      "source": "NPR World",
-      "category": "全球",
-      "published": "2026-11-02T07:19:35+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "89fc8f48f3fc7507f62b",
-      "title": "China state broadcaster pulls La Liga matches following Mbappé joke",
-      "summary": "China Media Group, which acknowledged Mbappé's apology, has not said how long the blackout will last.",
-      "url": "https://www.bbc.co.uk/news/articles/cq78pypg0800o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "category": "全球",
-      "published": "2026-11-02T03:58:38+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "156a3c01cb0d78b7f96a",
-      "title": "This legendary board game could take decades to complete",
-      "summary": "Andy Taeger & James Purcell are trying to become the first people ever complete the board game Campaign for North Africa. The is so complex it could take decades to finish.",
-      "url": "https://www.npr.org/2026/11/01/nx-s1-6025438/this-legendary-board-game-could-take-decades-to-complete",
-      "source": "NPR World",
-      "category": "全球",
-      "published": "2026-11-01T22:30:00+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
-    },
-    {
-      "id": "d35ebe7fd60cb9cd993a",
-      "title": "University of Cambridge scientist among those who died in Spanish train crash",
-      "summary": "Marta Shahbazi was an \"inspiring, talented and passionate scientist\", says the laboratory where she worked.",
-      "url": "https://www.bbc.co.uk/news/articles/cq5ynzvkn1d8o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC World",
-      "category": "全球",
-      "published": "2026-11-01T17:05:18+00:00",
-      "score": 5.7,
-      "reason": "主题关键词与覆盖范围启发式估计；非事实评级"
+      "reason": "主题关键词与覆盖范围启发式估计；非事实评级",
+      "title_zh": "关于乌克兰和俄罗斯的警报应用黑客",
+      "summary_zh": "乌克兰和俄罗斯都表示空袭警报应用程序遭到网络攻击——乔·蒂迪解释了我们目前所知的情况."
     }
   ],
-  "last_refresh": "2026-11-03T00:38:49.728308+00:00",
-  "last_success": "2026-11-03T00:38:49.728308+00:00",
-  "total_candidates": 328,
-  "deduplicated_candidates": 96,
+  "last_refresh": "2026-11-03T04:15:00.626079+00:00",
+  "last_success": "2026-11-03T04:15:00.626079+00:00",
+  "total_candidates": 329,
+  "deduplicated_candidates": 104,
   "published_count": 50,
-  "translated_count": 0,
+  "translated_count": 50,
+  "translation_characters": 17638,
+  "translation_errors": [],
   "source_count": 7,
-  "mode": "RSS 自动采集，无 AI 翻译",
+  "mode": "RSS 自动采集 + Argos 离线中文翻译",
   "scoring": "规则辅助评分，非 AI 语义分析",
   "feed_errors": []
 }
