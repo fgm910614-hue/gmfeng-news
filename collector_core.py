@@ -20,14 +20,14 @@ FEEDS=[
  ('UN News','全球','https://news.un.org/feed/subscribe/en/news/all/rss.xml'),
  ('NPR World','全球','https://feeds.npr.org/1004/rss.xml'),
  ('NPR Business','商业经济','https://feeds.npr.org/1006/rss.xml'),
- # 地域定向来源：失败时不阻断原有 RSS 采集。Google News 为聚合 RSS，链接可能跳转到原始媒体。
+ # 地域定向来源：优先使用媒体直接发布的 RSS，避免 Google News 聚合 RSS 的 503。
  ('BBC Asia','亚洲','https://feeds.bbci.co.uk/news/world/asia/rss.xml'),
  ('Guardian Asia','亚洲','https://www.theguardian.com/world/asia/rss'),
- ('China Headlines','中国','https://news.google.com/rss/search?q=China+economy+OR+China+technology+OR+China+society+when%3A2d&hl=en-US&gl=US&ceid=US:en'),
- ('China Business','中国','https://news.google.com/rss/search?q=China+business+OR+Shenzhen+OR+Hong+Kong+when%3A2d&hl=en-US&gl=US&ceid=US:en'),
- ('Asia Japan Korea','亚洲','https://news.google.com/rss/search?q=Japan+OR+South+Korea+OR+Taiwan+when%3A2d&hl=en-US&gl=US&ceid=US:en'),
- ('Asia Southeast','亚洲','https://news.google.com/rss/search?q=Singapore+OR+Vietnam+OR+Thailand+OR+Indonesia+OR+Philippines+when%3A2d&hl=en-US&gl=US&ceid=US:en'),
- ('Asia India','亚洲','https://news.google.com/rss/search?q=India+economy+OR+India+technology+when%3A2d&hl=en-US&gl=US&ceid=US:en'),
+ ('SCMP China','中国','https://www.scmp.com/rss/4/feed'),
+ ('SCMP Hong Kong','中国','https://www.scmp.com/rss/2/feed'),
+ ('CNA Asia','亚洲','https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511'),
+ ('CNA Singapore','亚洲','https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416'),
+ ('CNA Business','商业经济','https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6936'),
 ]
 CATEGORIES=['全部','全球','中国','亚洲','商业经济','科技AI','科学环境']
 KEYWORDS=[('war|conflict|ceasefire|invasion|战争|冲突',1.5),('election|president|government|parliament|选举|政府',1.1),('economy|inflation|central bank|interest rate|经济|通胀',1.1),('ai|artificial intelligence|chip|人工智能|芯片',.8),('earthquake|flood|typhoon|climate|地震|洪水|台风',1.0)]
