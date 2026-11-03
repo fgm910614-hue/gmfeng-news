@@ -1,0 +1,190 @@
+{
+  "description": "GMFENG NEWS RSS source registry. Unavailable feeds are skipped, see feed_errors. URLs must be validated by live GitHub Actions.",
+  "feeds": [
+    {
+      "name": "BBC World",
+      "category": "全球",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "name": "BBC Business",
+      "category": "商业经济",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml"
+    },
+    {
+      "name": "BBC Technology",
+      "category": "科技AI",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml"
+    },
+    {
+      "name": "BBC Science",
+      "category": "科学环境",
+      "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
+    },
+    {
+      "name": "Guardian World",
+      "category": "全球",
+      "url": "https://www.theguardian.com/world/rss"
+    },
+    {
+      "name": "Guardian Technology",
+      "category": "科技AI",
+      "url": "https://www.theguardian.com/uk/technology/rss"
+    },
+    {
+      "name": "DW China",
+      "category": "中国",
+      "url": "https://rss.dw.com/rdf/rss-chi-all"
+    },
+    {
+      "name": "UN News Chinese",
+      "category": "全球",
+      "url": "https://news.un.org/feed/subscribe/zh/news/all/rss.xml"
+    },
+    {
+      "name": "BBC Chinese",
+      "category": "中国",
+      "url": "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"
+    },
+    {
+      "name": "UN News",
+      "category": "全球",
+      "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml"
+    },
+    {
+      "name": "NPR World",
+      "category": "全球",
+      "url": "https://feeds.npr.org/1004/rss.xml"
+    },
+    {
+      "name": "NPR Business",
+      "category": "商业经济",
+      "url": "https://feeds.npr.org/1006/rss.xml"
+    },
+    {
+      "name": "BBC Asia",
+      "category": "亚洲",
+      "url": "https://feeds.bbci.co.uk/news/world/asia/rss.xml"
+    },
+    {
+      "name": "Guardian Asia",
+      "category": "亚洲",
+      "url": "https://www.theguardian.com/world/asia/rss"
+    },
+    {
+      "name": "SCMP China",
+      "category": "中国",
+      "url": "https://www.scmp.com/rss/4/feed"
+    },
+    {
+      "name": "SCMP Hong Kong",
+      "category": "中国",
+      "url": "https://www.scmp.com/rss/2/feed"
+    },
+    {
+      "name": "CNA Asia",
+      "category": "亚洲",
+      "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511"
+    },
+    {
+      "name": "CNA Singapore",
+      "category": "亚洲",
+      "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416"
+    },
+    {
+      "name": "CNA Business",
+      "category": "商业经济",
+      "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6936"
+    },
+    {
+      "name": "BBC Europe",
+      "category": "欧洲",
+      "url": "https://feeds.bbci.co.uk/news/world/europe/rss.xml"
+    },
+    {
+      "name": "BBC US Canada",
+      "category": "美洲",
+      "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml"
+    },
+    {
+      "name": "BBC Latin America",
+      "category": "美洲",
+      "url": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml"
+    },
+    {
+      "name": "BBC Middle East",
+      "category": "中东非洲",
+      "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml"
+    },
+    {
+      "name": "BBC Africa",
+      "category": "中东非洲",
+      "url": "https://feeds.bbci.co.uk/news/world/africa/rss.xml"
+    },
+    {
+      "name": "BBC Australia",
+      "category": "大洋洲",
+      "url": "https://feeds.bbci.co.uk/news/world/australia/rss.xml"
+    },
+    {
+      "name": "Guardian Europe",
+      "category": "欧洲",
+      "url": "https://www.theguardian.com/world/europe-news/rss"
+    },
+    {
+      "name": "Guardian US",
+      "category": "美洲",
+      "url": "https://www.theguardian.com/us-news/rss"
+    },
+    {
+      "name": "Guardian Americas",
+      "category": "美洲",
+      "url": "https://www.theguardian.com/world/americas/rss"
+    },
+    {
+      "name": "Guardian Middle East",
+      "category": "中东非洲",
+      "url": "https://www.theguardian.com/world/middleeast/rss"
+    },
+    {
+      "name": "Guardian Africa",
+      "category": "中东非洲",
+      "url": "https://www.theguardian.com/world/africa/rss"
+    },
+    {
+      "name": "Guardian Australia",
+      "category": "大洋洲",
+      "url": "https://www.theguardian.com/australia-news/rss"
+    },
+    {
+      "name": "NPR Technology",
+      "category": "科技AI",
+      "url": "https://feeds.npr.org/1019/rss.xml"
+    },
+    {
+      "name": "Al Jazeera All",
+      "category": "全球",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml"
+    },
+    {
+      "name": "France24 English",
+      "category": "全球",
+      "url": "https://www.france24.com/en/rss"
+    },
+    {
+      "name": "DW English",
+      "category": "全球",
+      "url": "https://rss.dw.com/rdf/rss-en-all"
+    },
+    {
+      "name": "ABC Australia",
+      "category": "大洋洲",
+      "url": "https://www.abc.net.au/news/feed/51120/rss.xml"
+    },
+    {
+      "name": "RNZ World",
+      "category": "大洋洲",
+      "url": "https://www.rnz.co.nz/rss/world.xml"
+    }
+  ]
+}
