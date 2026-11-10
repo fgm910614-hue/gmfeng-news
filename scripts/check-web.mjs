@@ -33,5 +33,6 @@ assert.equal((await get('https://example.com/photo.jpg')).status,400);assert.equ
 assert.equal((await get('https://s.france24.com/photo.jpg')).status,200);
 globalThis.caches={default:{match:async()=>undefined,put:async()=>{}}};const context={request:new Request('https://news.gmfeng.com/api/image?url=https%3A%2F%2Fs.france24.com%2Fphoto.jpg'),waitUntil(promise){assert.equal(this,context);}};assert.equal((await onRequestGet(context)).status,200);globalThis.caches=oldCaches;
 globalThis.fetch=async()=>new Response('<html>not an image</html>',{headers:{'Content-Type':'text/html'}});assert.equal((await get('https://s.france24.com/photo.jpg')).status,404);
+globalThis.fetch=async()=>{throw new Error('Upstream unavailable')};const fallback=await get('https://s.france24.com/photo.jpg');assert.equal(fallback.status,302);assert.equal(fallback.headers.get('Location'),'https://s.france24.com/photo.jpg');
 }finally{globalThis.fetch=oldFetch;globalThis.caches=oldCaches;}
 console.log(`PASS: ${raw.length} reports → ${events.length} events; all source links retained; geography, score, title fallback, deployment assets and image boundary verified.`);
