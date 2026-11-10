@@ -1,0 +1,14 @@
+import { build } from 'esbuild';
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+await fs.mkdir('site/assets',{recursive:true});
+const output=await build({entryPoints:['web/main.tsx'],bundle:true,format:'esm',target:['es2020'],minify:true,write:false,jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'}});
+const js=output.outputFiles[0].contents;
+const css=await fs.readFile('web/styles.css');
+const hash=crypto.createHash('sha256').update(js).update(css).digest('hex').slice(0,12);
+const name=`reader-${hash}`;
+for(const f of await fs.readdir('site/assets'))if(/^reader-[a-f0-9]+\.(js|css)$/.test(f))await fs.unlink('site/assets/'+f);
+await fs.writeFile(`site/assets/${name}.js`,js);
+await fs.writeFile(`site/assets/${name}.css`,css);
+await fs.writeFile('site/index.html',`<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fcfcf9"><meta name="description" content="GMFENG NEWS，每日30–50条全球资讯。中文阅读、事件聚合、地区筛选，原文可查。"><link rel="canonical" href="https://news.gmfeng.com/"><link rel="manifest" href="/manifest.json"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/assets/${name}.css"><title>GMFENG NEWS · 全球资讯</title></head><body><div id="root"><p style="padding:40px;font-family:sans-serif">GMFENG NEWS · 正在读取全球资讯…</p></div><noscript>请启用 JavaScript 浏览、搜索与筛选资讯。<a href="/data/news.json">查看原始资讯数据</a></noscript><script type="module" src="/assets/${name}.js"></script></body></html>\n`);
+console.log(`Built ${name}: ${js.length} JS bytes, ${css.length} CSS bytes. Existing daily news.json preserved.`);

@@ -1,0 +1,6 @@
+node_modules
+.openai/
+.sites-runtime/
+.wrangler/
+__pycache__/
+*.pyc
