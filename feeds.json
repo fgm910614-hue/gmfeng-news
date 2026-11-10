@@ -185,6 +185,61 @@
       "name": "RNZ World",
       "category": "大洋洲",
       "url": "https://www.rnz.co.nz/rss/world.xml"
+    },
+    {
+      "name": "香港电台",
+      "category": "中国",
+      "url": "https://rthk.hk/rthk/news/rss/c_expressnews_clocal.xml"
+    },
+    {
+      "name": "中央社",
+      "category": "全球",
+      "url": "https://feeds.feedburner.com/rsscna/intworld"
+    },
+    {
+      "name": "The Japan Times",
+      "category": "亚洲",
+      "url": "https://www.japantimes.co.jp/feed/"
+    },
+    {
+      "name": "The Hindu National",
+      "category": "亚洲",
+      "url": "https://www.thehindu.com/news/national/feeder/default.rss"
+    },
+    {
+      "name": "Dawn Pakistan",
+      "category": "亚洲",
+      "url": "https://www.dawn.com/feeds/home"
+    },
+    {
+      "name": "ANTARA Indonesia",
+      "category": "亚洲",
+      "url": "https://en.antaranews.com/rss/news.xml"
+    },
+    {
+      "name": "Daily Maverick",
+      "category": "中东非洲",
+      "url": "https://www.dailymaverick.co.za/dmrss/"
+    },
+    {
+      "name": "RNZ Pacific",
+      "category": "大洋洲",
+      "url": "https://www.rnz.co.nz/rss/pacific.xml"
+    },
+    {
+      "name": "The Conversation Africa",
+      "category": "中东非洲",
+      "url": "https://theconversation.com/africa/articles.atom"
+    },
+    {
+      "name": "中国新闻网·国内",
+      "category": "中国",
+      "url": "https://www.chinanews.com.cn/rss/china.xml"
+    },
+    {
+      "name": "MercoPress",
+      "category": "美洲",
+      "url": "https://en.mercopress.com/rss"
     }
   ]
 }
