@@ -14,3 +14,6 @@
 /* Comfortable reading sizes across desktop and mobile. */
 .lead-summary,.pick p,.row-main>p{font-size:14px;line-height:1.85}
 @media(max-width:550px){.search-box{flex-basis:100%;height:42px}.search-box input{font-size:16px}.filter-button{font-size:14px;height:40px}.sort-select{min-width:122px;margin-left:auto}.sort-select select{font-size:14px;height:40px}.lead-summary,.row-main>p,.card-grid .row-main>p{font-size:14px}.row-main h3,.card-grid .row-main h3{font-size:19px;line-height:1.6}.region-chips{row-gap:5px}.row-footer{row-gap:7px}}
+
+.home-link{display:inline-flex;align-items:center;gap:5px;min-height:36px;white-space:nowrap;font-size:14px;color:var(--accent);border-radius:3px}.home-link:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:550px){.topbar .private-label,.home-link-prefix{display:none}.home-link{font-size:13px}.topbar-right{flex-shrink:0}}
