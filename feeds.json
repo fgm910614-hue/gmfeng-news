@@ -240,6 +240,26 @@
       "name": "MercoPress",
       "category": "美洲",
       "url": "https://en.mercopress.com/rss"
+    },
+    {
+      "name": "NVIDIA Newsroom",
+      "category": "科技AI",
+      "url": "https://nvidianews.nvidia.com/releases.xml"
+    },
+    {
+      "name": "Ars Technica",
+      "category": "科技AI",
+      "url": "https://feeds.arstechnica.com/arstechnica/index"
+    },
+    {
+      "name": "中央社科技",
+      "category": "科技AI",
+      "url": "https://feeds.feedburner.com/rsscna/technology"
+    },
+    {
+      "name": "TechCrunch",
+      "category": "科技AI",
+      "url": "https://techcrunch.com/feed/"
     }
   ]
 }

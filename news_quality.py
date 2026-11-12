@@ -73,6 +73,10 @@ def editorial_score(item,now=None):
  (r'(?<![a-z])(?:climate|flood|public health|science|research|energy|trade)(?![a-z])|气候|洪水|公共卫生|科学|研究|能源|贸易',0.5,'公共利益相关')]
  for pat,weight,reason in major:
   if re.search(pat,content,re.I):score+=weight;reasons.append(reason)
+ if (re.search(r'\b(?:CEO|chief executive)\b|首席执行官|执行长|執行長', title, re.I)
+     and re.search(r'resign|steps? down|ousted|interim|辞任|辞职|辭任|卸任|接任', title, re.I)
+     and not re.search(r'could|might|if |rumou?r|传闻|傳聞|若|可能', title, re.I)):
+  score+=2.3;reasons.append('公司管理层重大变动')
  if len(title)<14:score-=0.3
  if not summary:score-=0.3
  if re.search(r'(?i)\b(?:opinion|editorial|review|horoscope|celebrity gossip|live blog)\b|星座|娱乐八卦|评论文章',title):score-=1.1;reasons.append('观点或轻资讯降权')

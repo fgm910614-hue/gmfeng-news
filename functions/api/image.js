@@ -1,4 +1,4 @@
-const allowed=new Set(['s.france24.com','ichef.bbci.co.uk','i.guim.co.uk','cdn.i-scmp.com','dam.mediacorp.sg','npr.brightspotcdn.com','onecms-res.cloudinary.com','live-production.wcms.abc-cdn.net.au','www.aljazeera.com','www.abc.net.au']);
+const allowed=new Set(['i.dawn.com','cdn.arstechnica.net','s.france24.com','ichef.bbci.co.uk','i.guim.co.uk','cdn.i-scmp.com','dam.mediacorp.sg','npr.brightspotcdn.com','onecms-res.cloudinary.com','live-production.wcms.abc-cdn.net.au','www.aljazeera.com','www.abc.net.au']);
 export async function onRequestGet(context){
   let source;
   try{source=new URL(new URL(context.request.url).searchParams.get('url')||'');}catch{return new Response(null,{status:400});}

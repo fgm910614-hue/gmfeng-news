@@ -235,10 +235,13 @@ def balanced_pick(items, limit):
         region = news_region(item)
         item["region"] = region
         pools[region].append(item)
-    chosen = []
-    used = set()
+    # Reserve a few places for major developments before filling regional targets.
+    chosen = list(items[:min(5, limit)])
+    used = {id(item) for item in chosen}
     for region, target in REGION_TARGETS.items():
-        for item in pools[region][:target]:
+        remaining = max(0, target - sum(item["region"] == region for item in chosen))
+        eligible = (item for item in pools[region] if id(item) not in used)
+        for item in list(eligible)[:remaining]:
             if len(chosen) >= limit:
                 break
             chosen.append(item)

@@ -1,6 +1,40 @@
 {
   "items": [
     {
+      "id": "0ed1017dcace7dac2b11",
+      "title": "Nvidia CEO Jensen Huang has resigned",
+      "summary": "The FBI is investigating as Nvidia’s board holds urgent talks over Huang’s future.",
+      "url": "https://arstechnica.com/gadgets/2026/11/ceo-jensen-huangs-job-is-suddenly-on-the-line-at-nvidia/",
+      "source": "Ars Technica",
+      "category": "科技AI",
+      "published": "2026-11-12T14:05:17+00:00",
+      "image": "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-2296993009-1024x648.jpg",
+      "title_zh": "黄仁勋辞任英伟达首席执行官",
+      "summary_zh": "英伟达宣布黄仁勋辞任首席执行官。公司首席财务官科莱特·克雷斯出任临时首席执行官。",
+      "region": "美洲",
+      "topic": "科技",
+      "region_confidence": "事件主体总部位于美国",
+      "score": 8.2,
+      "reason": "公司管理层重大变动"
+    },
+    {
+      "id": "208a59594d1f9b2794e4",
+      "title": "Nvidia’s Jensen Huang resigns, chipmaker names CFO Colette Kress as interim CEO",
+      "summary": "Nvidia gets a new chief executive, days after former CEO Jensen Huang admitted to a romantic affair with an alleged Chinese spy.",
+      "url": "https://techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo/",
+      "source": "TechCrunch",
+      "category": "科技AI",
+      "published": "2026-11-12T14:10:34+00:00",
+      "image": "",
+      "title_zh": "黄仁勋辞任英伟达首席执行官，科莱特·克雷斯暂代职务",
+      "summary_zh": "英伟达宣布黄仁勋辞任首席执行官。公司首席财务官科莱特·克雷斯出任临时首席执行官。",
+      "region": "美洲",
+      "topic": "科技",
+      "region_confidence": "事件主体总部位于美国",
+      "score": 8.2,
+      "reason": "公司管理层重大变动"
+    },
+    {
       "id": "919799f40ad9896c5664",
       "title": "US election results could be positive for Lebanon, Hezbollah chief says",
       "summary": "Naim Qassem says Republican losses and Israel's election result could help Lebanon maintain sovereignty.",
@@ -609,8 +643,8 @@
       "topic": "综合",
       "region_confidence": "标题地点关键词（启发式）",
       "region": "中国",
-      "title_zh": "被蜂蜜圈套解开? Nvidia的Jensen Huang是中国间谍丑闻的核心人物",
-      "summary_zh": "原来宇宙的新主人是人类,太人类了. 中国指责利用硅谷巨头的弱点, Jensen Huang承认与新加坡华人科技CEOAlice Huang有婚外情——没有关系. 她正在接受对Nvidia最新收购的审查"
+      "title_zh": "法国24台梳理围绕黄仁勋的间谍指控",
+      "summary_zh": "法国24台梳理针对英伟达创始人黄仁勋的相关指控及其背景。"
     },
     {
       "id": "8b8597a1d133666572ac",
@@ -815,40 +849,6 @@
       "region": "中国",
       "title_zh": "王沪宁会见古巴党和政府特使、古共中央政治局委员、外交部长罗德里格斯",
       "summary_zh": "中新社北京11月11日电 中共中央政治局常委、全国政协主席王沪宁11日在北京会见古巴党和政府特使、古共中央政治局委员、外交部长罗德里格斯。"
-    },
-    {
-      "id": "36b1c89776b58b2d9e75",
-      "title": "Watch: BBC talks to Mississippi voters awaiting Senate result",
-      "summary": "Democrat Scott Colom's razor-thin advantage has defied political gravity in a conservative fortress that President Donald Trump won in 2024 by over 22 points.",
-      "url": "https://www.bbc.co.uk/news/videos/crvg2xex290no?at_medium=RSS&at_campaign=rss",
-      "source": "BBC US Canada",
-      "category": "美洲",
-      "published": "2026-11-11T13:03:05+00:00",
-      "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/66a8/live/610c8ee0-dd93-11f1-93e1-3b657b665bcf.jpg",
-      "score": 5.9,
-      "reason": "公共政策或产业影响；规则优先级估计，非事实可信度评级",
-      "topic": "政治",
-      "region_confidence": "来源栏目推断（低置信度）",
-      "region": "美洲",
-      "title_zh": "观察:BBC与密西西比州选民会谈,等待参议院结果.",
-      "summary_zh": "民主党人斯科特·科洛姆(Scott Colom)的剃须刀优势在2024年唐纳德·特朗普总统以超过22分的优势赢得的保守堡垒中抵挡了政治重力."
-    },
-    {
-      "id": "6f51e87d9762f2c85681",
-      "title": "Prosecutors open the vault at Peña’s house and find it empty; two safes found at Ueno Bank",
-      "summary": "Paraguayan prosecutors on Tuesday opened the armoured vault hidden in former President Santiago Peña’s summer house in San Bernardino, two days after finding it, and found it empty. In a second raid, at Ueno Bank’s headquarters, they found two more hidden safes, one containing about US$14,000 in cash.",
-      "url": "https://en.mercopress.com/2026/11/11/prosecutors-open-the-vault-at-pena-s-house-and-find-it-empty-two-safes-found-at-ueno-bank?utm_source=feed&utm_medium=rss&utm_content=main&utm_campaign=rss",
-      "source": "MercoPress",
-      "category": "美洲",
-      "published": "2026-11-11T11:12:00+00:00",
-      "image": "https://en.mercopress.com/data/cache/noticias/112073/100x80/boveda.jpg",
-      "score": 5.9,
-      "reason": "公共政策或产业影响；规则优先级估计，非事实可信度评级",
-      "topic": "政治",
-      "region_confidence": "来源栏目推断（低置信度）",
-      "region": "美洲",
-      "title_zh": "检察官打开Peña家的金库,发现金库是空的;在Ueno银行找到两个保险箱",
-      "summary_zh": "巴拉圭检察官星期二打开了隐藏在前总统圣地亚哥·佩尼亚在圣贝纳迪诺的避暑房的装甲金库, 在第二次突袭中,他们在上野银行总部发现了另外两个隐蔽的保险箱,其中一个保险箱藏有约14,000美元的现金。"
     }
   ],
   "last_refresh": "2026-11-12T00:53:45.946199+00:00",
@@ -859,15 +859,14 @@
   "translated_count": 50,
   "translation_characters": 17708,
   "translation_errors": [],
-  "source_count": 22,
+  "source_count": 24,
   "region_counts": {
-    "中国": 10,
-    "亚洲": 10,
-    "欧洲": 9,
     "美洲": 9,
     "中东非洲": 8,
-    "大洋洲": 4,
-    "其他": 0
+    "亚洲": 10,
+    "中国": 10,
+    "欧洲": 9,
+    "大洋洲": 4
   },
   "deduplication_stats": {
     "same_url": 72,
@@ -880,5 +879,6 @@
   "scoring": "可解释的公共事件优先级规则，非事实可信度评级；不使用付费 AI",
   "feed_errors": [],
   "configured_feeds": 48,
-  "successful_feeds": 48
+  "successful_feeds": 48,
+  "editorial_updated_at": "2026-11-12T16:33:13.290207+00:00"
 }
