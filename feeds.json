@@ -260,6 +260,56 @@
       "name": "TechCrunch",
       "category": "科技AI",
       "url": "https://techcrunch.com/feed/"
+    },
+    {
+      "name": "Yonhap News Agency",
+      "category": "亚洲",
+      "url": "https://en.yna.co.kr/RSS/news.xml"
+    },
+    {
+      "name": "Rappler Philippines",
+      "category": "亚洲",
+      "url": "https://www.rappler.com/feed/"
+    },
+    {
+      "name": "Bangkok Post",
+      "category": "亚洲",
+      "url": "https://www.bangkokpost.com/rss/data/topstories.xml"
+    },
+    {
+      "name": "Euronews",
+      "category": "欧洲",
+      "url": "https://www.euronews.com/rss?level=theme&name=news"
+    },
+    {
+      "name": "Premium Times Nigeria",
+      "category": "中东非洲",
+      "url": "https://www.premiumtimesng.com/feed"
+    },
+    {
+      "name": "The Times of Israel",
+      "category": "中东非洲",
+      "url": "https://www.timesofisrael.com/feed/"
+    },
+    {
+      "name": "Mexico News Daily",
+      "category": "美洲",
+      "url": "https://mexiconewsdaily.com/feed/"
+    },
+    {
+      "name": "Buenos Aires Herald",
+      "category": "美洲",
+      "url": "https://buenosairesherald.com/feed"
+    },
+    {
+      "name": "ScienceDaily",
+      "category": "科学环境",
+      "url": "https://www.sciencedaily.com/rss/top/science.xml"
+    },
+    {
+      "name": "PBS NewsHour",
+      "category": "全球",
+      "url": "https://www.pbs.org/newshour/feeds/rss/headlines"
     }
   ]
 }
