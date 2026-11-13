@@ -17,6 +17,7 @@ import tempfile
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode
 
+from prepare_edition import prepare_edition
 from collector_core import FEEDS, fetch_feed, score as fallback_score
 from translate_news import translate_items
 from news_quality import editorial_score, region_for, topic_for, deduplicate
@@ -427,6 +428,7 @@ def main():
         "successful_feeds": successful_feeds
     }
 
+    prepare_edition(final_items, ROOT / "site", NOW.date().isoformat())
     save_json(payload)
 
     print()
