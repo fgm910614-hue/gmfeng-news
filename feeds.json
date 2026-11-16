@@ -310,6 +310,36 @@
       "name": "PBS NewsHour",
       "category": "全球",
       "url": "https://www.pbs.org/newshour/feeds/rss/headlines"
+    },
+    {
+      "name": "36氪",
+      "category": "商业经济",
+      "url": "https://36kr.com/feed"
+    },
+    {
+      "name": "科技新报",
+      "category": "科技AI",
+      "url": "https://technews.tw/feed/"
+    },
+    {
+      "name": "Hong Kong Free Press",
+      "category": "中国",
+      "url": "https://hongkongfp.com/feed/"
+    },
+    {
+      "name": "VnExpress Vietnam",
+      "category": "亚洲",
+      "url": "https://e.vnexpress.net/rss/news.rss"
+    },
+    {
+      "name": "Rest of World",
+      "category": "科技AI",
+      "url": "https://restofworld.org/feed/"
+    },
+    {
+      "name": "Business Daily Africa",
+      "category": "中东非洲",
+      "url": "https://www.businessdailyafrica.com/service/rss/bd/1939132/feed.rss"
     }
   ]
 }
