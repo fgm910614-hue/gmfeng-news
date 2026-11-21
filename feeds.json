@@ -340,6 +340,71 @@
       "name": "Business Daily Africa",
       "category": "中东非洲",
       "url": "https://www.businessdailyafrica.com/service/rss/bd/1939132/feed.rss"
+    },
+    {
+      "name": "Sky News World",
+      "category": "全球",
+      "url": "https://feeds.skynews.com/feeds/rss/world.xml"
+    },
+    {
+      "name": "NBC News World",
+      "category": "全球",
+      "url": "https://feeds.nbcnews.com/nbcnews/public/world"
+    },
+    {
+      "name": "CBS News World",
+      "category": "全球",
+      "url": "https://www.cbsnews.com/latest/rss/world"
+    },
+    {
+      "name": "Le Monde English",
+      "category": "欧洲",
+      "url": "https://www.lemonde.fr/en/rss/une.xml"
+    },
+    {
+      "name": "The Straits Times World",
+      "category": "全球",
+      "url": "https://www.straitstimes.com/news/world/rss.xml"
+    },
+    {
+      "name": "The Wall Street Journal World",
+      "category": "全球",
+      "url": "https://feeds.content.dowjones.io/public/rss/RSSWorldNews"
+    },
+    {
+      "name": "Financial Times",
+      "category": "商业经济",
+      "url": "https://www.ft.com/rss/home/international"
+    },
+    {
+      "name": "Bloomberg Markets",
+      "category": "商业经济",
+      "url": "https://feeds.bloomberg.com/markets/news.rss"
+    },
+    {
+      "name": "The Washington Post World",
+      "category": "全球",
+      "url": "https://feeds.washingtonpost.com/rss/world"
+    },
+    {
+      "name": "Arab News",
+      "category": "中东非洲",
+      "url": "https://www.arabnews.com/rss.xml"
+    },
+    {
+      "name": "SCMP Technology",
+      "category": "科技AI",
+      "url": "https://www.scmp.com/rss/92/feed"
+    },
+    {
+      "name": "Associated Press via Flipboard",
+      "category": "全球",
+      "url": "https://flipboard.com/@AssociatedPress.rss"
+    },
+    {
+      "name": "The Straits Times Asia",
+      "category": "亚洲",
+      "url": "https://www.straitstimes.com/news/asia/rss.xml"
     }
   ]
 }
