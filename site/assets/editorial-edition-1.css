@@ -1,0 +1,86 @@
+/* GMFENG magazine edition. Keep the interface on system fonts for Chinese coverage. */
+:root {
+  --headline: Georgia, "Noto Serif SC", "Songti SC", SimSun, serif;
+  --interface: Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.brand, .mini-brand, .footer-brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  letter-spacing: -.065em;
+}
+.topbar {
+  background: var(--paper);
+  border-top: 4px solid var(--accent);
+  border-bottom: 1px solid var(--ink);
+}
+.top-tagline, .private-label, .sidebar-caption, .edition .eyebrow { display: none; }
+.mini-brand { display: inline-block; font-size: clamp(22px, 3vw, 48px); line-height: 1; }
+.mini-brand em {
+  display: inline-block;
+  font: 700 .32em/1 var(--interface);
+  letter-spacing: .1em;
+  color: var(--accent);
+}
+.edition { align-items: center; margin-bottom: 14px; }
+.edition h1 {
+  font: 700 clamp(30px, 3.25vw, 49px)/1.18 var(--headline);
+  margin: 0 0 8px;
+}
+.edition-stats { padding-block: 10px; }
+.reading-tabs { border-block: 1px solid var(--ink); }
+.reading-tabs button { font-weight: 650; }
+.reading-tabs button.active { border-bottom: 3px solid var(--accent); }
+.lead-story, .feed {
+  padding: 0; background: transparent; border: none; border-radius: 0;
+}
+.hero-photo, .row-photo-button, .card-grid .news-row, .modal { border-radius: 0; }
+.front-grid { align-items: start; border-bottom: 2px solid var(--ink); }
+.front-grid > * { min-width: 0; }
+.section-kicker, .rail-heading {
+  border-top: 3px solid var(--ink); padding-top: 10px;
+}
+.section-kicker { margin-bottom: 12px; font-size: 16px; }
+.lead-title h2 {
+  font: 700 clamp(26px, 2.6vw, 42px)/1.3 var(--headline);
+  letter-spacing: -.025em;
+}
+.pick h3, .row-main h3, .card-grid .row-main h3, .modal h2 {
+  font-family: var(--headline); font-weight: 700; line-height: 1.45;
+}
+.feed-heading h2 { font: 700 clamp(24px, 2.3vw, 34px)/1.25 var(--headline); }
+.row-main p, .lead-summary, .detail-summary { font-family: var(--interface); }
+.lead-summary { max-width: 52em; }
+.story-label, .section-kicker > span:last-child, .eyebrow { font-family: var(--interface); }
+.kind-tag, .score-chip { border-radius: 0; }
+.score-chip { font-variant-numeric: tabular-nums; }
+.region-chips button { border-radius: 2px; }
+.region-chips button.active { border-color: var(--ink); }
+.card-grid .news-row { border-width: 1px 0 0; padding-inline: 0; background: transparent; }
+@media (min-width: 761px) {
+  .site-shell { display: block; max-width: 1480px; }
+  .sidebar { left: -300px; top: 0; position: fixed; width: 270px; height: 100dvh; z-index: 35; visibility: hidden; }
+  .sidebar.is-open { left: 0; visibility: visible; }
+  .menu-shade { display: block; position: fixed; inset: 0; z-index: 34; background: #172b2499; }
+  .mobile-menu { display: inline-flex; }
+  .topbar { height: 82px; padding-inline: clamp(28px,5vw,84px); }
+  main { max-width: 1410px; padding: 27px clamp(28px,5vw,84px) 0; }
+  .front-grid { grid-template-columns: minmax(0,1.85fr) minmax(245px,1fr); gap: clamp(24px,3vw,54px); }
+  .hero-photo { aspect-ratio: 2.08; }
+  .top-picks { padding: 0; border: none; }
+  .pick { padding-block: 15px; }
+  .pick h3 { font-size: clamp(20px,1.55vw,25px); }
+  .news-row { padding-block: 20px; }
+}
+@media (max-width: 760px) {
+  .sidebar:not(.is-open) { visibility: hidden; }
+  .topbar { height: 58px; }
+  .edition h1 { font-size: 31px; }
+  .front-grid { padding-bottom: 20px; }
+  .top-picks { border: 0; padding: 0; }
+  .hero-photo { aspect-ratio: 1.8; }
+  .feed { border: 0; padding: 0; }
+  .reading-tabs { gap: 6px; }
+  .reading-tabs [role=tablist] { gap: clamp(8px,3.5vw,22px); }
+  .reading-tabs button { white-space: nowrap; }
+}
+@media (max-width: 360px) { .mini-brand em { display: none; } }
