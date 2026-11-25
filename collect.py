@@ -238,6 +238,10 @@ def balanced_pick(items, limit):
         pools[region].append(item)
     # Reserve a few places for major developments before filling regional targets.
     chosen = list(items[:min(5, limit)])
+    # Include up to three entertainment stories within the existing edition limit.
+    entertainment_slots = max(0, 3 - sum(item.get("topic") == "娱乐" for item in chosen))
+    entertainment = (item for item in items if item.get("topic") == "娱乐" and item not in chosen)
+    chosen.extend(list(entertainment)[:min(entertainment_slots, limit - len(chosen))])
     used = {id(item) for item in chosen}
     for region, target in REGION_TARGETS.items():
         remaining = max(0, target - sum(item["region"] == region for item in chosen))

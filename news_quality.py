@@ -53,6 +53,8 @@ def region_for(item):
  return '其他','地区未确定'
 
 def topic_for(item):
+ if item.get('category') == '娱乐' or re.search(r'\b(?:box office|film festival|grammys?|oscars?|cinema|concert tour|music awards|film premiere)\b|票房|電影節|电影节|演唱會|演唱会|金馬獎|金马奖|金曲獎|金曲奖', str(item.get('title') or ''), re.I):
+  return '娱乐'
  text=str(item.get('title') or '')+' '+str(item.get('summary') or '')[:180]
  hits=[(topic,len(pattern.findall(text))) for topic,pattern in TOPIC_COMPILED]
  if max((n for _,n in hits),default=0):return max(hits,key=lambda x:x[1])[0]

@@ -430,6 +430,21 @@
       "name": "ABC News US",
       "category": "全球",
       "url": "https://abcnews.go.com/abcnews/internationalheadlines"
+    },
+    {
+      "name": "中央社娱乐",
+      "category": "娱乐",
+      "url": "https://feeds.feedburner.com/rsscna/stars"
+    },
+    {
+      "name": "BBC Entertainment & Arts",
+      "category": "娱乐",
+      "url": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml"
+    },
+    {
+      "name": "Variety",
+      "category": "娱乐",
+      "url": "https://variety.com/feed/"
     }
   ]
 }

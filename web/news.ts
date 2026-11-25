@@ -4,7 +4,7 @@ import localImages from './data/images.json';
 export type Raw = {id:string;title:string;title_zh?:string;summary?:string;summary_zh?:string;url:string;source:string;published:string;image?:string;region?:string;topic?:string;category?:string;[key:string]:unknown};
 export type Event = {id:string;title:string;summary:string;original:string;published:string;firstPublished:string;image:string;imageSource?:string;regions:string[];places:string[];regionBasis:string;topic:string;kind:string;score:number;dimensions:{label:string;value:number;max:number;reason:string}[];sources:{name:string;url:string;title:string;original:string;published:string}[];reviewed:boolean;mergedBy:string};
 export const REGION_ORDER=['中国','亚洲','欧洲','美洲','中东与非洲','大洋洲','跨地区'];
-export const TOPICS=['国际政治','商业经济','科技与 AI','社会民生','科学环境','文化生活'];
+export const TOPICS=['国际政治','商业经济','科技与 AI','社会民生','科学环境','文化生活','娱乐'];
 export function clean(s:unknown){return String(s||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&#\d+;/g,'').replace(/\s+/g,' ').trim();}
 export function canonical(s:string){try{const u=new URL(s);if(u.protocol!=='https:')return '';for(const k of [...u.searchParams.keys()])if(/^(utm_|at_|traffic_source|fbclid)/.test(k))u.searchParams.delete(k);u.hash='';return u.toString().replace(/\/$/,'');}catch{return '';}}
 // Pinned to the reviewed source text: later updates must not inherit stale editorial copy.
@@ -24,7 +24,9 @@ const geography:{r:string;p:string;re:RegExp}[]=[
 export function locate(n:Raw){const t=lower(n);const hits=geography.filter(x=>x.re.test(t));if(hits.length)return {regions:[...new Set(hits.map(x=>x.r))],places:[...new Set(hits.map(x=>x.p))],basis:'依据标题中的事件地点与参与方；可同时归属多个地区'};
 // A publisher's location is never evidence of an event's location.
 return {regions:['跨地区'],places:['地点待确认'],basis:'标题无明确地点，保留为跨地区；未根据媒体所在地推断'};}
-export function topic(n:Raw){const t=lower(n);if(/climate|net zero|emission|cop31|气候|排放|电动车销售/.test(t))return '科学环境';if(/booker|novel|lewis|infertility|布克|小说|刘易斯|不孕/.test(t))return '文化生活';if(/ai\b|nvidia|gpu|spy tools|cyber|科技|人工智能|英伟达|网络攻击|频谱|窃听/.test(t))return '科技与 AI';if(/airline|air india|austerity|econom|航空|紧缩|经济/.test(t))return '商业经济';if(/hospital|pain|flood|blast|explosion|shot|student aid|cruise|医院|疼痛|洪|爆炸|枪击|辅助会|邮轮/.test(t))return '社会民生';return '国际政治';}
+export function topic(n:Raw){const t=lower(n);
+if(n.topic==='娱乐'||n.category==='娱乐'||/\b(?:box office|film festival|grammys?|oscars?|cinema|concert tour|music awards|film premiere)\b|票房|電影節|电影节|演唱會|演唱会|金馬獎|金马奖|金曲獎|金曲奖/i.test(n.title+' '+(n.title_zh||'')))return '娱乐';
+if(/climate|net zero|emission|cop31|气候|排放|电动车销售/.test(t))return '科学环境';if(/booker|novel|lewis|infertility|布克|小说|刘易斯|不孕/.test(t))return '文化生活';if(/ai\b|nvidia|gpu|spy tools|cyber|科技|人工智能|英伟达|网络攻击|频谱|窃听/.test(t))return '科技与 AI';if(/airline|air india|austerity|econom|航空|紧缩|经济/.test(t))return '商业经济';if(/hospital|pain|flood|blast|explosion|shot|student aid|cruise|医院|疼痛|洪|爆炸|枪击|辅助会|邮轮/.test(t))return '社会民生';return '国际政治';}
 export function normalizeNames(text:string) {
   return text.replace(/Jensen\s+Huang|Jen-Hsun\s+Huang|黃仁勳/gi,'黄仁勋')
     .replace(/NVIDIA|輝達|辉达|英偉達/gi,'英伟达');
