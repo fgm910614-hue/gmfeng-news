@@ -405,6 +405,31 @@
       "name": "The Straits Times Asia",
       "category": "亚洲",
       "url": "https://www.straitstimes.com/news/asia/rss.xml"
+    },
+    {
+      "name": "CNN via Flipboard",
+      "category": "全球",
+      "url": "https://flipboard.com/@CNN.rss"
+    },
+    {
+      "name": "EL PAIS English",
+      "category": "全球",
+      "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/english.elpais.com/portada"
+    },
+    {
+      "name": "The Indian Express",
+      "category": "亚洲",
+      "url": "https://indianexpress.com/feed/"
+    },
+    {
+      "name": "The Economic Times",
+      "category": "商业经济",
+      "url": "https://economictimes.indiatimes.com/rssfeedstopstories.cms"
+    },
+    {
+      "name": "ABC News US",
+      "category": "全球",
+      "url": "https://abcnews.go.com/abcnews/internationalheadlines"
     }
   ]
 }
