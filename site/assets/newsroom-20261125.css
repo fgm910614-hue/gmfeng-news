@@ -108,3 +108,7 @@ main{padding-top:28px}.edition{margin-bottom:20px}.edition h1{font-size:clamp(28
 /* Main-site wordmark: upright, bold sans-serif in every placement. */
 .brand,.mini-brand,.footer-brand{font-family:"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-style:normal;font-weight:900;letter-spacing:-.065116em}
 .mini-brand em,.footer-brand i{font-family:inherit;font-style:normal;font-weight:inherit}
+
+/* Keep the wordmark at the left of the header beside the navigation toggle. */
+.topbar-left{width:auto;justify-content:flex-start}.topbar-left .mobile-menu{position:static;flex-shrink:0}.topbar-right{position:static;margin-left:auto}.topbar{gap:20px}
+@media(max-width:760px){.topbar{gap:8px}}
