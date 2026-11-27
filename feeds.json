@@ -445,6 +445,66 @@
       "name": "Variety",
       "category": "娱乐",
       "url": "https://variety.com/feed/"
+    },
+    {
+      "name": "KBS WORLD English",
+      "category": "亚洲",
+      "url": "https://world.kbs.co.kr/rss/rss_news.htm?lang=e"
+    },
+    {
+      "name": "The Korea Times",
+      "category": "亚洲",
+      "url": "https://www.koreatimes.co.kr/www/rss/rss.xml"
+    },
+    {
+      "name": "Malay Mail",
+      "category": "亚洲",
+      "url": "https://www.malaymail.com/feed/rss/malaysia"
+    },
+    {
+      "name": "GMA News Philippines",
+      "category": "亚洲",
+      "url": "https://data.gmanetwork.com/gno/rss/news/feed.xml"
+    },
+    {
+      "name": "Philippine Daily Inquirer",
+      "category": "亚洲",
+      "url": "https://newsinfo.inquirer.net/feed"
+    },
+    {
+      "name": "The Irrawaddy",
+      "category": "亚洲",
+      "url": "https://www.irrawaddy.com/feed"
+    },
+    {
+      "name": "The Business Standard Bangladesh",
+      "category": "亚洲",
+      "url": "https://www.tbsnews.net/top-news/rss.xml"
+    },
+    {
+      "name": "EconomyNext Sri Lanka",
+      "category": "亚洲",
+      "url": "https://economynext.com/feed/"
+    },
+    {
+      "name": "Onlinekhabar English",
+      "category": "亚洲",
+      "url": "https://english.onlinekhabar.com/feed"
+    },
+    {
+      "name": "Nepali Times",
+      "category": "亚洲",
+      "url": "https://nepalitimes.com/feed"
+    },
+    {
+      "name": "The Astana Times",
+      "category": "亚洲",
+      "url": "https://astanatimes.com/feed/"
+    },
+    {
+      "name": "The Times of Central Asia",
+      "category": "亚洲",
+      "url": "https://timesca.com/feed/"
     }
   ]
 }
