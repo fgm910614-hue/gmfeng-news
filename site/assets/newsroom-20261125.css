@@ -4,8 +4,8 @@
   --copy: Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", SimSun, serif;
 }
 .brand, .mini-brand, .footer-brand {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
+  font-family: var(--display);
+  font-style: normal;
   font-weight: 800;
   letter-spacing: -.075em;
 }
@@ -104,3 +104,7 @@ main{padding-top:28px}.edition{margin-bottom:20px}.edition h1{font-size:clamp(28
 @media(min-width:761px) and (max-width:1100px){.mini-brand{font-size:35px}.topbar-right{gap:9px}.search-entry{display:none}.hero-photo{min-height:350px}.lead-story>:is(.story-label,.lead-title,.lead-summary,.lead-footer){margin-left:23px;margin-right:23px}.lead-title h2{font-size:31px}.pick h3{font-size:21px}}
 @media(max-width:760px){.topbar{height:82px;padding:0 5%;position:relative}.topbar-left{justify-content:flex-start;width:auto;gap:12px;padding:0}.topbar-left .mobile-menu{position:static;min-width:32px;width:32px}.mini-brand{font-size:28px;letter-spacing:-1.6px}.mini-brand em{font-size:.56em}.topbar-right{position:static;gap:5px}.search-entry{display:none}.home-link{padding:8px 0;font-size:11px}.home-link-prefix{display:none}.topbar-right .icon-button{width:30px;min-width:30px}.topbar-right svg{width:15px}main{padding-top:23px}.edition h1{font-size:30px}.edition p{font-size:13px}.edition-stats{font-size:11px;gap:10px}.reading-tabs{padding:8px;gap:4px}.reading-tabs [role=tablist]{gap:3px}.reading-tabs button{font-size:12px;padding:9px 10px}.reading-tabs .tab-note{font-size:11px}.front-grid{padding-top:23px}.lead-story{background:transparent}.lead-story>.lead-photo-button{order:1;margin-top:0;margin-bottom:17px}.lead-story>.story-label{order:2}.lead-story>.lead-title{order:3}.lead-story>.lead-summary{order:4}.lead-story>.lead-footer{order:5}.lead-title h2{font-size:29px;line-height:1.35}.hero-photo{aspect-ratio:1.5}.lead-summary{font-size:15px}.lead-footer{flex-wrap:wrap;gap:12px}.top-picks{margin-top:27px}.pick{padding:19px 0}.pick h3{font-size:22px}.feed-heading h2{font-size:27px}.row-main h3,.card-grid .row-main h3{font-size:20px}.row-main>p{font-size:13px}.region-chips{gap:6px}.region-chips button{font-size:11px;padding:6px 10px}.filterbar{gap:6px}.filter-button{padding:0 10px}.search-box{padding:0 10px}.card-grid{gap:18px}.modal h2{font-size:27px}}
 @media(max-width:380px){.mini-brand{font-size:24px}.mini-brand em{display:none}.topbar-left{gap:6px}.reading-tabs button{font-size:11px;padding:9px 8px}.topbar-right{gap:2px}}
+
+/* Main-site wordmark: upright, bold sans-serif in every placement. */
+.brand,.mini-brand,.footer-brand{font-family:"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-style:normal;font-weight:900;letter-spacing:-.065116em}
+.mini-brand em,.footer-brand i{font-family:inherit;font-style:normal;font-weight:inherit}
