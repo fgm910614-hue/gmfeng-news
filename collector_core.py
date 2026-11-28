@@ -152,6 +152,8 @@ def rss_image(entry):
  return ''
 
 def fetch_feed(name,cat,url):
+ # Initium is linked as an index of headlines. Keep article text and photos on the publisher site.
+ headlines_only = urllib.parse.urlsplit(url).hostname == 'theinitium.com'
  req=urllib.request.Request(url,headers={'User-Agent':'DailySignal/1.0 (RSS reader)'})
  with urllib.request.urlopen(req,timeout=12) as resp: raw=resp.read(2_000_000)
  root=ET.fromstring(raw)
@@ -162,7 +164,7 @@ def fetch_feed(name,cat,url):
   link=get_text(e,'link')
   if not link:
    ln=e.find('{http://www.w3.org/2005/Atom}link');link=ln.get('href','') if ln is not None else ''
-  summary=get_text(e,'description','{http://purl.org/rss/1.0/modules/content/}encoded','{http://www.w3.org/2005/Atom}summary')[:460]
+  summary='' if headlines_only else get_text(e,'description','{http://purl.org/rss/1.0/modules/content/}encoded','{http://www.w3.org/2005/Atom}summary')[:460]
   published=get_text(e,'pubDate','{http://purl.org/dc/elements/1.1/}date','{http://www.w3.org/2005/Atom}published','{http://www.w3.org/2005/Atom}updated')
   try:
    dt=parsedate_to_datetime(published)
@@ -172,7 +174,7 @@ def fetch_feed(name,cat,url):
    try:iso=datetime.datetime.fromisoformat(published.replace('Z','+00:00')).isoformat()
    except:iso=datetime.datetime.now(datetime.timezone.utc).isoformat()
   if not title or not link.startswith('https://'):continue
-  out.append(dict(id=hashlib.sha256(link.encode()).hexdigest()[:20],title=title,summary=summary,url=link,source=name,category=cat,published=iso,image=rss_image(e)))
+  out.append(dict(id=hashlib.sha256(link.encode()).hexdigest()[:20],title=title,summary=summary,url=link,source=name,category=cat,published=iso,image='' if headlines_only else rss_image(e)))
  return out
 def score(item):
  text=(item['title']+' '+item['summary']).lower();v=4.5;hits=[]

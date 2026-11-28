@@ -505,6 +505,11 @@
       "name": "The Times of Central Asia",
       "category": "亚洲",
       "url": "https://timesca.com/feed/"
+    },
+    {
+      "name": "端传媒",
+      "category": "全球",
+      "url": "https://theinitium.com/zh-hans/rss/"
     }
   ]
 }
