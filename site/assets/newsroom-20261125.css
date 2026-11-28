@@ -56,6 +56,7 @@
   main { max-width:1380px; padding:18px clamp(24px,4vw,58px) 0; }
   .lead-story { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); column-gap:clamp(22px,3vw,48px); grid-template-rows:auto 1fr auto auto 1fr; }
   .lead-story .section-kicker { grid-column:1/-1; }
+  .lead-story > .lead-title { width: auto; min-width: 0; justify-self: stretch; }
   .lead-photo-button { grid-column:1; grid-row:2/6; align-self:stretch; }
   .hero-photo { height:100%; min-height:270px; aspect-ratio:auto; }
   .hero-photo img { position:absolute; inset:0; }
